@@ -9,10 +9,7 @@
 <body>
   <header>
     <h1><a href="/">{{ .Site.Title }}</a></h1>
-    <nav class="navbar">
-      <a class="nav-btn" href="/">Home</a>
-      <a class="nav-btn" href="/posts/">Blog</a>
-    </nav>
+    {{ partial "navbar.html" . }}
   </header>
   <main>
     {{ block "main" . }}{{ end }}
