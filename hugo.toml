@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://nat-stephenson.github.io/Chris_B_BlogV2/'
 languageCode = 'en-us'
 title = 'Chris Beeleys Blog'
 theme = 'PaperMod'
