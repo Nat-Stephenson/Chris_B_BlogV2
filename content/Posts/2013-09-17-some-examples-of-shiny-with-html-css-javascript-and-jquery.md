@@ -1,11 +1,15 @@
----
 author: chrisbeeley
 categories:
-- Uncategorized
 date: "2013-09-17T10:35:09Z"
 id: 481
 title: Some examples of Shiny with HTML, CSS, JavaScript, and jQuery
----
+++
+author = "chrisbeeley"
+categories = ["Uncategorized"]
+date = "2013-09-17T10:35:09Z"
+id = 481
+title = "Some examples of Shiny with HTML, CSS, JavaScript, and jQuery"
+++
 
 It’s becoming rather [Shiny](http://www.rstudio.com/shiny/)-centric, this blog, I know, but I just put some little demos about how to use Shiny with HTML, CSS, JavaScript, and jQuery, just some toy examples with links to source, up on the [website](http://chrisbeeley.net/website/).
 
