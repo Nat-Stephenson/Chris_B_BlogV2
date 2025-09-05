@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="blog-list" style="text-align:center; margin-top:3em;">
+  <h2 style="color:#ff2222; font-family:'Share Tech Mono', monospace, Arial, sans-serif; font-size:2em; letter-spacing:2px; text-shadow:2px 2px 8px #000, 0 0 20px #ff2222; margin-bottom:1.5em; background:rgba(0,0,0,0.85); padding:0.7em 0.5em; border-radius:10px; display:inline-block;">Sith Holocron: All Blog Posts</h2>
+  <div class="blog-card-list">
+    {{ range .Pages }}
+      <div class="blog-card">
+        <a class="blog-card-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <div class="blog-card-date">{{ .Date.Format "2006-01-02" }}</div>
+        {{ with .Params.description }}
+          <div class="blog-card-desc">{{ . }}</div>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,157 @@
+.blog-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  margin: 2em auto 0 auto;
+  max-width: 1200px;
+}
+.blog-card {
+  background: rgba(0,0,0,0.92);
+  border: 2px solid #ff2222;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  padding: 2em 1.5em 1.5em 1.5em;
+  min-width: 270px;
+  max-width: 340px;
+  flex: 1 1 270px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.blog-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 32px #ff2222cc;
+  border-color: #ffe81f;
+}
+.blog-card-title {
+  color: #ff2222;
+  font-family: 'Share Tech Mono', monospace, Arial, sans-serif;
+  font-size: 1.3em;
+  font-weight: 700;
+  text-shadow: 1px 1px 8px #000, 0 0 10px #ff2222;
+  text-decoration: none;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid #ff2222;
+  transition: color 0.2s, border 0.2s;
+}
+.blog-card-title:hover, .blog-card-title:focus {
+  color: #ffe81f;
+  border-bottom: 1px solid #ffe81f;
+}
+.blog-card-date {
+  color: #fff;
+  font-size: 0.95em;
+  margin-bottom: 1em;
+}
+.blog-card-desc {
+  color: #ffe81f;
+  font-size: 1em;
+  text-align: center;
+  margin-top: 0.5em;
+}
+.post-content-box {
+  background: rgba(0,0,0,0.92);
+  color: #fff;
+  padding: 2.5em 2em;
+  border-radius: 14px;
+  max-width: 800px;
+  margin: 3em auto 2em auto;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+  font-size: 1.15em;
+  line-height: 1.7;
+}
+.post-content-box h1, .post-content-box h2, .post-content-box h3, .post-content-box h4, .post-content-box h5, .post-content-box h6 {
+  color: #ffe81f;
+  text-shadow: 1px 1px 6px #000;
+}
+.post-content-box a {
+  color: #ffe81f;
+  text-decoration: underline;
+}
+.post-meta {
+  color: #ff2222;
+  font-size: 0.95em;
+  margin-bottom: 1.5em;
+}
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+body {
+  font-family: 'Share Tech Mono', monospace, Arial, sans-serif;
+}
+
+.starwars-crawl {
+  color: #ffe81f;
+  font-family: 'Share Tech Mono', monospace, Arial, sans-serif;
+  font-size: 1.2em;
+  text-shadow: 2px 2px 8px #000, 0 0 20px #ffe81f;
+  line-height: 1.7;
+  letter-spacing: 1.5px;
+  overflow: hidden;
+  height: 300px;
+  position: relative;
+  perspective: 400px;
+}
+.starwars-crawl p {
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  animation: crawl 30s linear infinite;
+  text-align: center;
+}
+@keyframes crawl {
+  0% {
+    bottom: -100px;
+    transform: rotateX(20deg)  translateZ(0);
+  }
+  100% {
+    bottom: 100%;
+    transform: rotateX(25deg)  translateZ(-300px);
+  }
+}
+
+.landing-box {
+  background: rgba(0,0,0,0.85);
+  color: #ffe81f;
+  padding: 2em 2.5em;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 4em auto 0 auto;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  font-family: 'Share Tech Mono', monospace, Arial, sans-serif;
+  border: 2px solid #ffe81f;
+}
+body {
+  background: url("/Chris-Galaxy-Background.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.navbar {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-btn {
+  display: inline-block;
+  background: rgba(0,0,0,0.85);
+  color: #ffe81f;
+  border: 2px solid #ffe81f;
+  border-radius: 10px;
+  padding: 1em 2.2em;
+  margin: 0 1em;
+  text-decoration: none;
+  font-size: 1.35em;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  box-shadow: 0 2px 12px #000;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.nav-btn:hover, .nav-btn:focus {
+  background: #ffe81f;
+  color: #111;
+  border: 2px solid #fff;
+}

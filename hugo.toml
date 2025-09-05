@@ -3,3 +3,6 @@ languageCode = 'en-us'
 title = 'Chris Beeleys Blog'
 theme = 'PaperMod'
 
+[params]
+	customCSS = ["css/custom.css"]
+
