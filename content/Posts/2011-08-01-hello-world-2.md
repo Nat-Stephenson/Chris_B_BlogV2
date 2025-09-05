@@ -1,11 +1,10 @@
----
-author: chrisbeeley
-categories:
-- Uncategorized
-date: "2011-08-01T12:05:37Z"
-id: 5
-title: Welcome to the blog
----
++++
+author = "chrisbeeley"
+categories = ["Uncategorized"]
+date = "2011-08-01T12:05:37Z"
+id = 5
+title = "Welcome to the blog"
++++
 
 Inspired by the many excellent blogs about research, statistics, and computing I have finally decided to set up my own. My work for Nottinghamshire Healthcare NHS Trust and the Institute of Mental Health comprises advice and consultancy, research and evaluation, and data visualisation. I like to use R for my statistics, and have recently started making reproducible research using Sweave and odfWeave. Over time I have found I need to write more and more code and I am studying Java in October to help me on the way to being a proper programmer.
 
