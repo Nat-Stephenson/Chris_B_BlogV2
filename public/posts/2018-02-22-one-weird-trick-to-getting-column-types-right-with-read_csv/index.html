@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>One weird trick to getting column types right with read_csv</h1>
+  <div class="post-meta">2018-02-22</div>
+  <div class="post-body">
+    <p>Using read_csv from the tidyverse is so easy that I didn’t bother to look at the <a href="https://cran.r-project.org/web/packages/readr/README.html">readr documentation</a> for a long time. However, I’m glad I did, because there is, as they say in the click bait world, one weird trick to get your column types right with read_csv. read_csv (or the other delimited file reading functions like read_tsv) does a brilliant job guessing what column types things are but by default it only looks at 1000 rows. Fine for most datasets, but actually I have more than one dataset where the first 1000 rows are missing, which doesn’t help the parser at all. So do it manually and get it right. But what a pain, all that typing, right? Wrong. Just do this:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+testSpec = read_csv(&#34;masterTest.csv&#34;)
+</code></pre><p>And you’ll get this output automatically:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+Parsed with column specification:
+cols(
+  TeamN = col_character(),
+  Time = col_integer(),
+  TeamC = col_double(),
+  Division = col_integer(),
+  Directorate = col_integer(),
+  Contacts = col_integer(),
+  HIS = col_character(),
+  Inpatient = col_character(),
+  District = col_character(),
+  SubDistrict = col_character(),
+  fftCategory = col_character()
+)
+</code></pre><p>You’re supposed to copy and paste that into a new call, putting right any mistakes. And in fact there is one, in this very spreadsheet, the parser incorrectly guesses that Inpatient is character when it is in fact integer- because the first 1000 rows are missing.</p>
+<p>So just copy all that into a new call and fix the mistake, like this:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+testSpec = read_csv(&#34;masterTest.csv&#34;, 
+                    col_types = 
+                      cols(TeamN = col_character(),
+                           Time = col_integer(),
+                           TeamC = col_double(),
+                           Division = col_integer(),
+                           Directorate = col_integer(),
+                           Contacts = col_integer(),
+                           HIS = col_character(),
+                           Inpatient = col_integer(),
+                           District = col_character(),
+                           SubDistrict = col_character(),
+                           fftCategory = col_character()
+                      ))
+</code></pre><p>If you’re still having problems, you can have a look using problems(testSpec).</p>
+<p>Absolute pure genius. The more I use the tidyverse, the more I know about it, and the more I know about it, the more I love it.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

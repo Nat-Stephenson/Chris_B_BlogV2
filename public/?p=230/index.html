@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Easy tables for publication</h1>
+  <div class="post-meta">2012-07-08</div>
+  <div class="post-body">
+    <p>I’m writing for a journal article today and it’s the familiar problem of how to export all of the beautiful tables and graphs from LaTeX to Word (using R, of course).</p>
+<p>It’s surprisingly easy to get a table from R into Word (or Open Office, or…). Just export the table to a text file and use tab-delimiting:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+write.table(mytable1, &#34;Summary.txt&#34;, sep=&#34;t&#34;)
+</code></pre><p>Then simply copy the table into the file, select “Convert text to table”, make sure “tab-delimiting” is selected, which it probably is, and voila.</p>
+<p>You can be even sneakier than that though without too much effort.</p>
+<p>I’ve been pasting together the familiar “mean (sd)” format used in tables quite easily like so:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+varNames=c(&#34;H.Tot&#34;, &#34;C.tot&#34;, &#34;R.tot&#34;, &#34;HCRtot&#34;)
+
+sapply(varNames, function(m) rbind(paste(round(tapply(mydata[,m], mydata[,&#34;Dir&#34;], mean, na.rm=TRUE), 2),
+    &#34; (&#34;, round(tapply(mydata[,m], mydata[,&#34;Dir&#34;], sd, na.rm=TRUE), 2), &#34;)&#34;, sep=&#34;&#34;)))
+</code></pre><p>Somehow coming up with generic solutions for transferring tables is a lot less depressing than sitting typing them out or manually tidying up SPSS output.</p>
+<p>Apologies for the poor code formatting, incidentally, I can’t seem to work out how to format correctly on the blog. My version on RStudio is a lot more readable.</p>
+<p>EDIT:</p>
+<p>I’m glad I did this, because I’ve just been told that I put a variable in that I shouldn’t have done and so I have to re-do all the tables! Looks like I was right about generic solutions and typing!</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

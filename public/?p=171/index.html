@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Stupidest pie chart of the year 2011</h1>
+  <div class="post-meta">2012-01-02</div>
+  <div class="post-body">
+    <p>I’ve just been looking at the <a href="http://blog.infoadvisors.com/index.php/2011/12/22/stupidest-bar-chart-of-2011-congrats-klout/">Stupidest bar chart of the year 2011</a> and I’ve been inspired to submit my Stupidest pie chart of the year 2011. I won’t say from where I obtained it and I’ve drawn the data myself to save from annoying the original authors. And here it is (click to enlarge):</p>
+<p><a href="http://chrisbeeley.net/wp-content/uploads/2012/01/rplot01.png"><img loading="lazy" src="http://chrisbeeley.net/wp-content/uploads/2012/01/rplot01.png?w=300" title="Stupidest pie chart of the year, 2011"></a></p>
+<p>It represents the amount of maternity and paternity leave available in different countries. Pie charts are often not a very good idea, but in this case they are the worst possible idea. Pie charts should be used when the whole pie has some meaning. A whole customer base, individuals living in Nottinghamshire, something like that. The whole of these pies represents- what? The total amount of leave in these countries. This has no real world meaning at all, and the whole point of the pie chart is lost.</p>
+<p>Even worse, underneath the pie chart they are forced to write “Spare a thought for parents in the USA and Sierra Leone… paid maternity leave 0 weeks, paid paternity leave 0 weeks.” because you cannot represent 0 on a pie chart! This should have set alarm bells ringing. One better way to plot these data:</p>
+<p><a href="http://chrisbeeley.net/wp-content/uploads/2012/01/rplot02.png"><img loading="lazy" src="http://chrisbeeley.net/wp-content/uploads/2012/01/rplot02.png?w=300" title="Two minute bar chart"></a></p>
+<p>This is absolutely factory-fresh out of the box settings, there are many ways to improve this plot and other types of plots which could be used. This plot improves on the previous one by:</p>
+<p>1. Better able to compare levels of leave in each country<br>
+2. Better able to compare levels of each type of leave<br>
+3. No need for data labels which spell out number of weeks in each country and contribute to very low data:ink ratio<br>
+4. Able to display zero points which puts the marginal notes about USA and Sierra Leone on the plot!</p>
+<p>Code for both:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+par(mfrow=c(1, 2))
+
+maternity=c(18, 16, 39, 17, 16, 0, 0)
+paternity=c(3, 3, 14, 3, 14, 0, 0)
+country=c(&#34;China&#34;, &#34;Holland&#34;, &#34;UK&#34;, &#34;Greece&#34;, &#34;France&#34;, &#34;USA&#34;, &#34;Sierra Leone&#34;)
+
+pie(maternity, labels=paste(country, maternity, &#34;weeks&#34;), main=&#34;Maternity leave&#34;)
+
+pie(paternity, labels=paste(country, paternity, &#34;weeks&#34;), main=&#34;Paternity leave&#34;)
+
+# 2 minute bar chart
+
+par(mar=c(10, 4, 4, 2) + 0.1)
+
+barplot(maternity, names.arg=country, ylab=&#34;Maternity leave in weeks&#34;, las=3)
+
+barplot(paternity, names.arg=country, ylab=&#34;Paternity leave in weeks&#34;, las=3)
+</code></pre>
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

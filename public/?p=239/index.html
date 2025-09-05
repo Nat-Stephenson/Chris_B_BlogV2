@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Super easy heatmaps of postcodes</h1>
+  <div class="post-meta">2012-07-25</div>
+  <div class="post-body">
+    <p>Whatever I want to do, there are always intrepid explorers who’ve been there and blogged it, and so the satisfaction of my long held desire to get to know more about how Nottinghamshire Healthcare’s services are spread geographically has been wonderfully expedited by <a href="http://blog.revolutionanalytics.com/2012/07/making-beautiful-maps-in-r-with-ggmap.html">these</a> amazing <a href="http://stevendkay.wordpress.com/2010/04/21/plotting-postcode-density-heatmaps-in-r/">blog posts</a>.</p>
+<p>Special thanks, of course, go to David Kahle and Hadley Wickham, progenitors of the mighty <a href="http://cran.r-project.org/web/packages/ggmap/index.html">ggmap</a> package and also to the fine folk at <a href="http://www.geonames.org/">geonames</a> who freely distribute postcodes from around the world in .csv format.</p>
+<p><a href="http://chrisbeeley.net/wp-content/uploads/2012/07/map2.png"><img loading="lazy" src="http://chrisbeeley.net/wp-content/uploads/2012/07/map2.png?w=300" title="Map">Click to expand!</a></p>
+<pre tabindex="0"><code>library(ggmap)
+
+myUni=mydata[!duplicated(mydata$ClientID),] # produce dataframe with unique individuals
+
+mywhere=merge(myUni, mycodes, by.x=&#34;ClientHomePostcode&#34;,
+              by.y=&#34;Postcode&#34;, all=FALSE) # merge with postcode data
+
+### Plot!
+
+map.center = geocode(&#34;Nottingham, UK&#34;) # Centre map on Nottingham
+
+myMap = qmap(c(lon=map.center$lon, lat=map.center$lat),
+              source=&#34;google&#34;, zoom=10) # download map from Google
+
+myMap + stat_bin2d(bins=80, aes(x=Long, y=Lat), alpha=.6, data=mywhere) +
+  scale_fill_gradient(low = &#34;blue&#34;, high =&#34;red&#34;)
+  # plot with a bit of transparency
+</code></pre><p>Note finally that you can use Google’s map API to give you latitudes and longitudes from postcode data (using the geocode() function), but you are limited to 2500 queries per day. I had many more than that so I needed to download the postcode data.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

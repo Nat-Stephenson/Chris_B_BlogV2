@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Passing strings as variables from a Shiny app into dplyr</h1>
+  <div class="post-meta">2018-06-13</div>
+  <div class="post-body">
+    <p>I’ve been sort of waiting until I understood this thoroughly, and I was going to write a very detailed blog post about it, and although I do understand it a lot better now than I did, I’m still not at the point where I would write an authoritative blog post about it confidently because there are too many things that I don’t understand.</p>
+<p>However, I’m aware that there are people out there right now who are trying to write dplyr code that takes strings as variable inputs, passed in from a Shiny interface, and I know how difficult it is to Google, because I Googled it myself. So I’m going to at least show you what to do, and talk a bit about it, and then maybe I’ll come back to it when I’ve understood it better myself.</p>
+<p>So you quite often have a combo box in Shiny applications that returns a variable name, and you want to ask dplyr to filter/ select/ whatever on that name. So you have the variable name in the form of a string, and you want to pass it into dplyr. The old way, which still works, but is now deprecated, uses the filter_ function which evaluates a whole string as if it were dplyr code. So, for example, you might do this:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+library(tidyverse)
+
+input = data.frame(&#34;variable&#34; = &#34;cty&#34;)
+
+mpg %&gt;%
+  filter_(paste(input$variable, &#34; &gt; 18&#34;))
+
+input = data.frame(&#34;variable&#34; = &#34;hwy&#34;)
+
+mpg %&gt;%
+  filter_(paste(input$variable, &#34; &gt; 18&#34;))
+</code></pre><p>I’ve given the dataframe the name “input” to make it look like a Shiny application. So imagine your user clicks on “cty” in your app, which makes input$variable equal to “cty”. Now you just paste that together with a filter condition (“&gt; 18”) and pass the whole thing to filter_(). Now your user perhaps sets the variable to “hwy”, and the calculation can be done with the new value.</p>
+<p>So what’s the new way? Well, as I mentioned I don’t understand it deeply, so read the following at your own risk, but essentially what you’re doing is described in this blog post about <a href="https://dplyr.tidyverse.org/articles/programming.html">dplyr programming</a>. You need to quote the variable names which sort of makes them variable-y (told you I didn’t really understand) and then you need to unquote them. Normally you would be doing this:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+input = quo(cty)
+
+mpg %&gt;%
+  filter(!!(input) &gt; 18)
+
+input = quo(hwy)
+
+mpg %&gt;%
+  filter(!!(input) &gt; 18)
+</code></pre><p>So (I think!) you’re saying to R- hey, listen, R, input is cty as a variable name. Wherever you see input, pretend it’s cty but as a variable name. This is called quoting. Then you have to unquote, using !!(). So you’re saying- that thing I mentioned about input being cty quoted? Well, I want it now, unquote input (using !!()) and then use that variable name in the following.</p>
+<p>So you’re basically doing that except! Except you’re quoting a string, not a bare variable name. To quote strings, use sym. Other than that, it’s the same. So do this:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+input = sym(&#34;cty&#34;)
+
+mpg %&gt;%
+  filter(!!(input) &gt; 18)
+
+input = sym(&#34;hwy&#34;)
+
+mpg %&gt;%
+  filter(!!(input) &gt; 18)
+</code></pre><p>So now you can pass variable names from comboboxes in Shiny applications using dplyr.</p>
+<p>I’m sorry I don’t have the detail as nailed as I would like, I wouldn’t advice sitting any exams after reading this, but it should get you coding, at least, which is the first step. If the fog ever truly clears for me I promise I’ll come back and write more.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Web application development with R using Shiny new version of code</h1>
+  <div class="post-meta">2014-05-10</div>
+  <div class="post-body">
+    <p>The new version of Shiny (0.9) is wonderful, hopefully I will talk about it again soon, but it does break the code in my book, <a href="http://www.packtpub.com/web-application-development-with-r-using-shiny/book">Web application development with R using Shiny</a>. It’s only a small difference, the selectInput() function used to ask for preselected elements to be given as the name of a list (i.e. the friendly version that appears to users in the UI, “Egg Salad”) whereas now it asks for the actual value (“eggSalad”, e.g.).</p>
+<p>I wrote the book with 0.7 and I want to stay true to what’s in the book so I’ve added a couple of lines in to the <a href="https://github.com/ChrisBeeley/GoogleAnalyticsAdvanced">Google Analytics Advanced</a> application to make it work with 0.9 and 0.7.</p>
+<p>The code now starts with a version check like this:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+# test - are they using the older version of Shiny?
+
+packageCheck = unlist(packageVersion(&#34;shiny&#34;))
+
+if(packageCheck[1] == 0 &amp; packageCheck[2] &lt; 9){
+  
+  shinyOld = TRUE
+} else {
+  shinyOld = FALSE
+}
+</code></pre><p>And there is one place in server.R and one in ui.R that checks whether that is true or false and changes its behaviour accordingly. It’s probably quicker for you to just control-F to shinyOld once in each codefile than have me tell you where they are.</p>
+<p>As far as I can tell it now works beautifully on 0.9, please do let me know on here or on Twitter @chrisbeeley and I’ll be glad to have a look. Or if you have any other questions or comments I’m always glad to talk about them.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

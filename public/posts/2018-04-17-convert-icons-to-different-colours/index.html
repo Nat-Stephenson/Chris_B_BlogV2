@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Convert icons to different colours</h1>
+  <div class="post-meta">2018-04-17</div>
+  <div class="post-body">
+    <p>I’m horribly, horribly busy (stay tuned until mid May-ish to hear about what I’ve been up to) but I’ve just done something so quickly and easily that I couldn’t resist sharing it.</p>
+<p>So I’ve downloaded a little man icon, I’m going to use it in a pictogram to show the percentage of people who agree with something. Just a bit of fun for a presentation. The man is black, but I thought it would be nice to have green men who are saying happy things (“I felt supported”, that kind of thing) and red men who are saying unhappy things (“I felt isolated”, e.g.).</p>
+<p>I was a bit worried it would eat up too much time. I read <a href="http://www.imagemagick.org/Usage/color_basics/#replace">this article about Imagemagick</a>. I typed this into my Linux terminal:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: plain; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+convert blackicon.png -fuzz 40% -fill green -opaque black greenicon.png
+</code></pre><p>Boom. Finished. God bless you, Linux.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

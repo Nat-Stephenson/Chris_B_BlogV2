@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tables on Chris Beeleys Blog</title>
+    <link>https://nat-stephenson.github.io/Chris_B_BlogV2/tags/tables/</link>
+    <description>Recent content in Tables on Chris Beeleys Blog</description>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Jan 2016 14:53:54 +0000</lastBuildDate>
+    <atom:link href="https://nat-stephenson.github.io/Chris_B_BlogV2/tags/tables/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Make your own HTML tables in R</title>
+      <link>https://nat-stephenson.github.io/Chris_B_BlogV2/?p=796/</link>
+      <pubDate>Wed, 13 Jan 2016 14:53:54 +0000</pubDate>
+      <guid>https://nat-stephenson.github.io/Chris_B_BlogV2/?p=796/</guid>
+      <description>&lt;p&gt;I’ve avoid writing HTML tables by hand in R, reasoning that it would be far too complicated. But the problem with using packages like pander and rmarkdown, much as I love those packages, is you can’t fine tune the outputs. So if a colleague asks you to add little extra touches for a report you can’t really do it.&lt;/p&gt;
+&lt;p&gt;So it was a nice surprise to find that it’s actually not that hard. Here’s a table with 3 columns which looks very nice with bootstrap (don’t know what the styling options are on WordPress so it just looks unformatted here)&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

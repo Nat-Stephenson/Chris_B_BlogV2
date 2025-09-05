@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Convert pdf to text on Ubuntu</h1>
+  <div class="post-meta">2015-06-12</div>
+  <div class="post-body">
+    <p>We had rather an ugly scanned pdf of a very lovely poem over on our <a href="http://feedback.nottinghamshirehealthcare.nhs.uk/content/wonderful-poem-about-nurses-care-and-compassion-mother-and-baby-unit">feedback website</a> so I thought I would try to post the text from it using Optical Character Recognition using <a href="https://code.google.com/p/tesseract-ocr/">tesseract</a>.</p>
+<p>On Ubuntu start with:</p>
+<p>``</p>
+<p>sudo apt-get install tesseract-ocr imagemagick</p>
+<p>You’ll need to convert the pdf to an image file:</p>
+<p>``</p>
+<p>convert -density 600 input.pdf output.tif</p>
+<p>and then output to output.txt like this:</p>
+<p>``</p>
+<p>tesseract myscan.png out</p>
+<p>Do note that if you have problems where an empty text file is returned (as I did) this could be because the margins around the image are too large- crop it down (not too tightly) and it should work nicely (although I would say it returned “l” a lot when in natural English that is obviously going to be an “I”, seems kind of obvious to a user but there must be some technical problem there, I suppose).</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Quick R tip- making scripts work across OS&amp;#8217;s</h1>
+  <div class="post-meta">2012-04-05</div>
+  <div class="post-body">
+    <p>Quick thought for newbies to R. I have spent four years loading in data like this</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+mydatafirst=read.csv(&#34;D:\Dropbox\R-files\Project1\etc.&#34;)
+</code></pre><p>on my Windows machine and like this</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+mydatafirst=read.csv(&#34;/home/chris/Dropbox/R-files/Project1/etc.&#34;)
+</code></pre><p>on my Linux machine. I would comment out the one I wasn’t using at the time.</p>
+<p>It’s fine for a while but once you start reading multiple dataframes (particularly if they’re not all loaded at the start) it gets very fiddly and annoying. Don’t do this. Just set your working directory. You can do it manually:</p>
+<p>setwd(“D:\Dropbox\R-files\etc.”)</p>
+<p>Or, even better, the seamless option:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+setwd(ifelse(Sys.info()[&#39;sysname&#39;]==&#34;Windows&#34;;,
+             &#34;D:\Dropbox\R-files\Project1\&#34;,
+             &#34;~/Dropbox/R-files/Project1/&#34;))
+</code></pre><p>Mmm, I can almost taste the hours I’ll save in the course of a year.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

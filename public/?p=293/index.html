@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Shiny app running at last</h1>
+  <div class="post-meta">2012-12-02</div>
+  <div class="post-body">
+    <p>I’m currently taking part in the NHS Institute for Innovation supported Patient Feedback challenge with colleagues at Nottinghamshire Healthcare NHS Trust. We’re delivering our patient feedback in a web system and I have been working with the web developers, the lovely people over at <a href="http://numiko.com/#/home">Numiko</a>, they’re doing all the web type stuff and I’m writing R code, running over <a href="http://www.rforge.net/FastRWeb/">FastRWeb</a>, which is fantastic and will get a well deserved blog post some time soon.<br>
+In order to make sure that my code keeps pace with the interface they design and there’s no nasty surprises when the launch of the website gets near I’ve been doing some prototyping with the wonderful <a href="http://www.rstudio.com/shiny/">Shiny</a> package from the amazing people over at RStudio, whose IDE I sincerely love.</p>
+<p>I’ve done a little video about it for the challenge which I thought I might as well share on here. I’m blown away by how easy it is to use and although I’m using it for prototyping in this case I can imagine building a whole tool with it and getting something really useful and attractive, maybe with a little bit of JavaScript jiggery-pokery.</p>
+<p><a href="https://vimeo.com/54727705">Video</a></p>
+<p>I won’t share all the server side code because it’s a bit of a mess at the moment, I’ll put a cleaner version up on GitHub once it’s a bit further along, but here’s the UI code just to demonstrate how simple it is (really the server side just picks up one or two of the variables and then does various graphs etc. based on code I already had).</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+library(shiny)
+# Define UI
+shinyUI(pageWithSidebar(
+
+# Application title
+headerPanel(&#34;SUCE results&#34;),
+
+# first set up All/ Division results
+
+sidebarPanel(
+selectInput(&#34;Division&#34;, &#34;Select division&#34;, list(&#34;Trust&#34; = 9, &#34;Local&#34;= 0, &#34;Forensic&#34;=1, &#34;HP&#34; = 2)),
+conditionalPanel(
+condition = &#34;input.Division != 9&#34;,
+uiOutput(&#34;divControls&#34;)
+),
+textInput(&#34;keyword&#34;, &#34;Keyword search: (e.g. food, staff)&#34;),
+selectInput(&#34;start&#34;, &#34;From: &#34;, list(&#34;Apr - Jun 11&#34; = 9, &#34;Jul - Sep 11&#34; = 10, &#34;Oct - Dec 11&#34; = 11,
+&#34;Jan - Mar 12&#34;= 12, &#34;Apr - Jun 12&#34; = 13, &#34;Jul - Sep 12&#34; = 14)),
+selectInput(&#34;end&#34;, &#34;To: &#34;, list(&#34;Apr - Jun 11&#34; = 9, &#34;Jul - Sep 11&#34; = 10, &#34;Oct - Dec 11&#34; = 11,
+&#34;Jan - Mar 12&#34;= 12, &#34;Apr - Jun 12&#34; = 13, &#34;Jul - Sep 12&#34; = 14),
+selected = &#34;Jul - Sep 12&#34;),
+checkboxInput(&#34;custom&#34;, &#34;Advanced controls&#34;, value=FALSE),
+conditionalPanel(
+condition = &#34;input.custom == true&#34;,
+selectInput(&#34;responder&#34;, &#34;Responder type&#34;, list(&#34;All&#34; = 9, &#34;Service user&#34;= 0, &#34;Carer&#34;=1)),
+selectInput(&#34;sex&#34;, &#34;Gender&#34;, list(&#34;All&#34; = &#34;All&#34;, &#34;Men&#34;= &#34;M&#34;, &#34;Women&#34;= &#34;F&#34;))
+)
+
+),
+
+# Show the caption and plot of the requested variable
+mainPanel(
+h3(textOutput(&#34;Title&#34;)),
+tabsetPanel(
+tabPanel(&#34;Stacked plot&#34;, plotOutput(&#34;StackPlot&#34;)), 
+tabPanel(&#34;Trend&#34;, plotOutput(&#34;TrendPlot&#34;)), 
+tabPanel(&#34;Responses&#34;, tableOutput(&#34;TableResponses&#34;))
+))
+))
+ 
+</code></pre>
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Shiny application in a morning</h1>
+  <div class="post-meta">2013-06-18</div>
+  <div class="post-body">
+    <p>Sort of apropos of nothing, really, this, but I was doing some research with some colleagues the other day and to help out I built a <a href="http://www.rstudio.com/shiny/">shiny</a> application in a morning. Munging the data etc. took ages as it always does but once I actually had everything clean and tidy and working laying an interface on top was the easy bit. What a fantastic tool it really is, completely changed the way we work with data now we can just throw stuff on the internet and let people play around just in the morning. My sincere thanks to all the devs at <a href="http://www.rstudio.com/">RStudio.</a></p>
+<p>Nothing Earth shattering really, just a few tick boxes and some binomial distribution numbers, but should prove useful. It’s <a href="http://chrisbeeley.net:8080/shiny/Diagnoses/">here</a>, in case you’re curious, source code below (I’ll just post the server.R and ui.R files on top of each other for simplicity, you get the idea.</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+### server.R
+
+library(shiny)
+library(xtable)
+
+rm(list=ls())
+
+load(&#34;shiny.Rdata&#34;)
+
+variables = names(shinyData)[4:19]
+
+shinyServer(function(input, output) {
+  
+  myValues = reactive({
+    
+    if(length(input$prison) &gt; 0){
+      
+      subData = subset(shinyData, Prison %in% input$prison)
+      
+    } else {
+      
+      subData = shinyData
+      
+    }
+    
+    if(length(input$traits) &gt; 0){
+      
+      for(z in input$traits){
+        
+        subData = subData[which(subData[,z] == 1),]
+        
+      }
+      
+    }
+    
+    subData
+    
+  })
+  
+  output$outTable &lt;- renderTable({
+    
+    Results = sapply(variables, function(x) rbind(prop.table(table(factor(myValues()[,x], levels=0:1))) * 100))[2,]
+    
+    CI = 100-sapply(variables, function(y) binom.test(table(factor(myValues()[,y], levels = 0:1)))[[&#34;conf.int&#34;]])*100
+    
+    finalTab = data.frame(&#34;Estimate&#34; = Results, t(CI[2:1,]))
+    
+    names(finalTab)[2:3] = c(&#34;Low CI&#34;, &#34;High CI&#34;)
+    
+    xtable(finalTab, digits=1)
+    
+  })
+  
+  output$nResponses = renderText({
+    
+    paste(&#34;n = &#34;, nrow(myValues()))
+    
+  })
+  
+})
+
+### ui.R
+
+library(shiny)
+
+shinyUI(pageWithSidebar(
+  
+  # Application title
+  headerPanel(&#34;Summary of database results&#34;),
+  
+  sidebarPanel(
+    
+    checkboxGroupInput(&#34;prison&#34;,
+                       &#34;Area&#34;,
+                       c(&#34;A&#34;, &#34;B&#34;, &#34;C&#34;),
+                       selected = c(&#34;A&#34;, &#34;B&#34;, &#34;C&#34;)
+    ),
+    
+    checkboxGroupInput(&#34;traits&#34;,
+                       &#34;Characteristics&#34;,
+                       c(&#34;Drug&#34;, &#34;Psychosis&#34;, &#34;Depression&#34;, 
+                         &#34;Anxiety&#34;, &#34;BPD&#34;, &#34;Alcohol&#34;, &#34;PTSD&#34;, &#34;OCD&#34;, &#34;Bipolar&#34;, &#34;Paranoid.PD&#34;, 
+                         &#34;Dependent.PD&#34;, &#34;Dissocial.PD&#34;, &#34;PD&#34;, &#34;Referral&#34;, &#34;Any&#34;, &#34;NonDrug&#34;),
+                       selected = c(NULL)
+    )
+        
+  ),
+  
+  mainPanel(
+   tableOutput(&#34;outTable&#34;),
+    textOutput(&#34;nResponses&#34;)
+  )
+))
+</code></pre>
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

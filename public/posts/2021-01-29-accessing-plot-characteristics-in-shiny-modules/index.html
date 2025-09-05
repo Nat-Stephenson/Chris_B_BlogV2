@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Accessing plot characteristics in Shiny modules</h1>
+  <div class="post-meta">2021-01-29</div>
+  <div class="post-body">
+    <p>It was my New Year’s resolution to blog more and that’s going really well because this is the first blog I’ve done all year and it’s nearly the end of January. Well, I suppose to be fair I did do <a href="https://cdu-data-science-team.github.io/team-blog/posts/2021-01-20-a-new-github-release-and-future-projects/">a post on our team blog</a> but that feels like I’m making excuses.</p>
+<p>Anyway, never mind! This is a quick blog post because this problem I had the other day has, as far as I can tell, absolutely no Google juice at all and it stumped me for ages, even though it is very simple.</p>
+<p>We wanted to <a href="https://github.com/rstudio/shiny/issues/650">access the height of a Shiny plot at runtime</a> but we couldn’t get it to work in a Shiny module. I googled all sorts of stuff, “session$clientData module”, “accessing plot characteristics shiny module”, “session variable shiny module”, all kinds of things, but it just didn’t work. I figured the namespacing was probably messing it up but I couldn’t figure it out. The simple version would have been session$clientData$output_sentiment_plot_upset_width, but I wasn’t surprised that that didn’t work because of the namespacing.</p>
+<p>When I looked at the raw HTML (which I did, in desperation) I saw that the input was actually called “output_mod_sentiment_ui_1-sentiment_plot_upset”. The mod_sentiment bit is the name spacing. So I got pretty close when I tried session$clientData$output_mod_sentiment_ui_1-sentiment_plot_upset_width. But R thought that the hyphen was a minus, so that didn’t work either. Then the light dawned</p>
+<p>session$clientData$`output_mod_sentiment_ui_1-sentiment_plot_upset_width`</p>
+<p>That’s it. Simple, but it took me a while, so hopefully if you have the same problem you will find this post.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

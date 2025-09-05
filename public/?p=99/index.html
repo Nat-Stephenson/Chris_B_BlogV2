@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Misleading means and medians</h1>
+  <div class="post-meta">2011-09-01</div>
+  <div class="post-body">
+    <p>Over at <a href="http://exploringdatablog.blogspot.com/2011/08/some-additional-thoughts-on-useless.html">this</a> excellent blog there is an interesting discussion about times when means and medians can be deceptive, particularly in the case where two variables with equal means have very different distributions. I chimed in myself and mentioned some of the examples which I come across in my work. Here is a particularly egregious example, measurement of self-esteem in patients on psychiatric wards in England and Belgium-</p>
+<p>England mean<br>
+3.4<br>
+Belgium mean<br>
+3.2<br>
+England median<br>
+3.3<br>
+Belgium median<br>
+3.2<br>
+England sd<br>
+1.2<br>
+Belgium sd<br>
+0.9</p>
+<p>Looks pretty similar on the face of it. Let’s have a look at the actual distribution (click to enlarge).</p>
+<p><a href="http://chrisbeeley.net/wp-content/uploads/2011/09/selfesteem.png"><img loading="lazy" src="http://chrisbeeley.net/wp-content/uploads/2011/09/selfesteem.png?w=300" title="SelfEsteem"></a></p>
+<p>Pretty different. Quite interesting to consider why the two are so different. It would appear on the face of it that the measure works better in Belgium, producing a nice normal distribution, and not so well in England, where many individuals are selecting the maximum response across all the items in the scale.</p>
+<p>Too often, I think, we talk about non-normal distributions in terms of their median, when as you can see here, many sins can be hidden in this way. I don’t know why the self-esteem measure is behaving like this in England, but we haven’t finished with these data so look out for more on the blog as we have a more thorough look.</p>
+<p>R code:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+mygraph=function(x){
+  
+par(mfrow=c(1,2))  
+
+a=subset(mydata, country==1)
+b=subset(mydata, country==2)
+
+print(&amp;quot;England mean&amp;quot;)
+print(mean(a[,x], na.rm=TRUE))
+print(&amp;quot;Belgium mean&amp;quot;)
+print(mean(b[,x], na.rm=TRUE))
+
+print(&amp;quot;England median&amp;quot;)
+print(median(a[,x], na.rm=TRUE))
+print(&amp;quot;Belgium median&amp;quot;)
+print(median(b[,x], na.rm=TRUE))
+
+print(&amp;quot;England sd&amp;quot;)
+print(sd(a[,x], na.rm=TRUE))
+print(&amp;quot;Belgium sd&amp;quot;)
+print(sd(b[,x], na.rm=TRUE))
+
+hist(a[,x], main=&amp;quot;England&amp;quot;, xlab=&amp;quot;Self esteem score&amp;quot;, breaks=seq(0,5,by=.2), freq=FALSE)
+lines(density(a[,x], na.rm=TRUE))
+hist(b[,x], main=&amp;quot;Belgium&amp;quot;, xlab=&amp;quot;Self esteem score&amp;quot;, breaks=seq(0,5,by=.2), freq=FALSE)
+lines(density(b[,x], na.rm=TRUE))
+}
+
+mygraph(&amp;quot;Selfesteem&amp;quot;)
+</code></pre>
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

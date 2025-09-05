@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Adding line returns in RMarkdown in a loop</h1>
+  <div class="post-meta">2019-03-31</div>
+  <div class="post-body">
+    <p>Another one that’s for me when I forget. The internet seems strangely reluctant to tell me how to do this, yet <a href="https://stackoverflow.com/questions/49561077/creating-a-new-line-within-an-rmarkdown-chunk">here it is</a> buried in the answer to something else.</p>
+<p>Sometimes you are writing an RMarkdown document and wish to produce text with line returns between each piece. I can never work out how to do it. It’s very simple. Just two spaces and then \n. Like this ” \n”. Here’s some real code with it in.</p>
+<pre tabindex="0"><code>  team_numbers %&gt;% 
+    mutate(print = paste0(TeamN, TeamC, &#34;  \n  \n&#34;)) %&gt;% 
+    pull(print) %&gt;% 
+    cat()
+</code></pre><p>Simple!</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

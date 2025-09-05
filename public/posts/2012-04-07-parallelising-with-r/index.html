@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1></h1>
+  <div class="post-meta">0001-01-01</div>
+  <div class="post-body">
+    <p>author: chrisbeeley
+categories:
+date: &ldquo;2012-04-07T10:02:59Z&rdquo;
+id: 209
+publicize_results:
+title: Parallelising with R</p>
+<p>I’ve been fitting some generalised linear mixed effects models with 400,000 rows or so and it takes a while even on my quad core 3.4Ghz behemoth. The time has come for me to learn how to use multiple cores with R. The <a href="http://stat.ethz.ch/R-manual/R-devel/library/parallel/doc/parallel.pdf">parallel</a> library which comes with the new-ish R 2.14 makes it pretty easy. For my purposes, all I needed to do was pop all of my calculations in a list and then call <a href="http://www.rforge.net/doc/packages/multicore/mclapply.html">mclapply</a> on them.
+++</p>
+<p>This is my first time parallelising so this might not be the best way to do it, if you know better please say in the comments, but if you are interested to give it a try then this should get you started.</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+++
+mymodels=list(&#34;glmer(AllViol~Clinical*Dir+(1|ID),
+              family=binomial, data=testF)&#34;,
+              &#34;glmer(AllViol~Risk*Dir+(1|ID), 
+              family=binomial, data=testF)&#34;,
+              &#34;glmer(AllViol~Historical*Dir+(1|ID), 
+              family=binomial, data=testF)&#34;,
+              &#34;glmer(SerViol~Clinical*Dir+(1|ID), 
+              family=binomial, data=testSer)&#34;,
+              &#34;glmer(SerViol~Risk*Dir+(1|ID), 
+              family=binomial, data=testSer)&#34;,
+              &#34;glmer(SerViol~Historical*Dir+(1|ID),
+              family=binomial, data=testSer)&#34;
+              )
+  
+myfinal=mclapply(mymodels, function(x) eval(parse(text=x)))
+</code></pre><p>One thing I would add is that this by no means gets the full speed out of my CPU, which only ran at about 30% and not even all of the time. I think there’s probably more that I could do to get a speed boost, but this has got this job done and got me thinking about parallel processing.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Serving RStudio Connect content to logged in and anonymous users</h1>
+  <div class="post-meta">2020-10-19</div>
+  <div class="post-body">
+    <p>We have our <a href="https://involve.nottshc.nhs.uk:8443/experience/">patient feedback dashboard</a> in the open where anyone can see what Nottinghamshire Healthcare NHS Trust’s patients are saying about us. Now I’ve got a Connect licence I thought perhaps I might build another version for our staff where I put stuff that we can’t share- for example the comments of people who click the “I do not wish to share this comment” box.</p>
+<p>But I don’t want to build and maintain two versions, that would be hideous, and I was going to put a litte</p>
+<pre tabindex="0"><code>logged_in &lt;- TRUE
+</code></pre><p>at the top of the one for staff and then just swap the files round but knowing me I’ll do it in a hurry one Friday and accidentally publish the logged in version to everybody. For the benefit of those who are new at this, and indeed for those who are not that new but feel the need to double check it actually works like they think it does before they design the whole system around it (like me), it’s pretty simple.</p>
+<p>Just publish one and make people authenticate to it, and publish one in the open. Separate apps, separate links, same code. But add somewhere something like</p>
+<pre tabindex="0"><code>loggedIn &lt;- reactive({
+    
+  if(isTruthy(session$user)){
+      
+    TRUE
+  } else {
+    FALSE
+  }
+})
+</code></pre><p>Success!</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>
