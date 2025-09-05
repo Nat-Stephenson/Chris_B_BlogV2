@@ -3,10 +3,8 @@ author: chrisbeeley
 categories:
 - Uncategorized
 date: "2015-09-30T11:45:28Z"
-guid: http://chrisbeeley.net/?p=769
 id: 769
 title: Sharing files from host machine on virtualbox
-url: /?p=769
 ---
 
 I’ve really started getting into virtual machines recently. Firstly because I like to try different flavours of Linux and constantly reinstalling partitions is starting to get a bit of a drag, especially when it often takes ages to get the graphical desktop to work because of my silly graphics card. Secondly, and more importantly, because I’m finding if you want to do programming, or especially write about programming, you often need a “clean” system or a system set up a particular way to test things and work on multiple things at once. So the code I write for [Shiny](http://shiny.rstudio.com/) is based on the newest 0.12 version. However, my server is all the way back on 0.7 for various reasons to do with browser compatibility. So this means I need a local 0.7 installation to test programs that I’m updating on the server. Or sometimes it can be important to check what the dependencies for your programs are. You may have installed something a year ago that makes everything work beautifully that you’ve long since forgotten about, and if you tell someone else to do what you’re doing it won’t work on their machine. In the Linux world technologies like [Docker](https://www.docker.com/) which package up whole environments at the operating system level and help you to [manage dependencies](https://deis.com/blog/2015/sailing-past-dependency-hell-with-docker) (amongst other things) are starting to spring up and in the R world things like [packrat](https://rstudio.github.io/packrat/) roll up packages into bundles in order that all package versions are the same and dependencies satisfied.

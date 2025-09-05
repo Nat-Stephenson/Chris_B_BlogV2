@@ -3,10 +3,8 @@ author: chrisbeeley
 categories:
 - Uncategorized
 date: "2014-06-20T21:03:47Z"
-guid: http://chrisbeeley.net/?p=657
 id: 657
 title: Make your own Twitter ticker using PHP, CSS3, and JavaScript
-url: /?p=657
 ---
 
 I made a little Twitter ticker for work the other day, which will fetch posts with a particular hashtag and then animate them marquee style across the screen, I thought I may as well share it here. This version will fetch the last 100 tweets to the #rstats hashtag, remove the retweeets, and then show up to 50 animated across the screen.

@@ -3,10 +3,8 @@ author: chrisbeeley
 categories:
 - Uncategorized
 date: "2013-11-08T17:00:44Z"
-guid: http://chrisbeeley.net/?p=537
 id: 537
 title: Free and open source software. Come for the free, stay for the awesome
-url: /?p=537
 ---
 
 I just wrote this for the Institute of Mental Health [blog](http://imhblog.wordpress.com/) so I thought I may as well cross-post here. I promise I will talk about something other than Shiny soon 🙂

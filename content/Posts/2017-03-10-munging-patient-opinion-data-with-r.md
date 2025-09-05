@@ -3,10 +3,8 @@ author: chrisbeeley
 categories:
 - Uncategorized
 date: "2017-03-10T11:31:23Z"
-guid: http://chrisbeeley.net/?p=904
 id: 904
 title: Munging Patient Opinion data with R
-url: /?p=904
 ---
 
 I’ve written a post about using Patient Opinion’s new API, focusing on how to download your data using R but also perhaps useful to those using other languages as a gentle introduction, which can be found [here](http://chrisbeeley.net/?p=886).

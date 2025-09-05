@@ -3,14 +3,12 @@ author: chrisbeeley
 categories:
 - Uncategorized
 date: "2013-03-20T14:36:08Z"
-guid: http://chrisbeeleyimh.wordpress.com/?p=371
 id: 371
 publicize_reach:
 - a:2:{s:7:"twitter";a:1:{i:906009;i:50;}s:2:"wp";a:1:{i:0;i:2;}}
 publicize_twitter_user:
 - ChrisBeeley
 title: Data in the NHS
-url: /?p=371
 ---
 
 I wrote a little piece for an information pack related to the [Patient Feedback Challenge](http://www.institute.nhs.uk/innovation/spread_and_adoption/nhs_patient_feedback_challenge.html) so I thought I may as well share it here. I’m a little rushed so I won’t hyperlink the references, apologies for this they are all at the bottom in plain text.
