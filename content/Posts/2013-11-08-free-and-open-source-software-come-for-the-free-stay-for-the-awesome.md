@@ -1,16 +1,15 @@
----
 author: chrisbeeley
 categories:
-- Uncategorized
 date: "2013-11-08T17:00:44Z"
 id: 537
 title: Free and open source software. Come for the free, stay for the awesome
----
+++
 
 I just wrote this for the Institute of Mental Health [blog](http://imhblog.wordpress.com/) so I thought I may as well cross-post here. I promise I will talk about something other than Shiny soon 🙂
 
 Open source software refers to software whose code is available for anybody to view, revise and reuse. This should be contrasted with closed or proprietary code which is known only to the manufacturer, and who will often charge a fee for individuals to use the software (for example, Microsoft Word, or Adobe Photoshop).
 
+++
 There are many types of open source licence but the principle of viewing, revising, and reusing underpins them all. On the face of it, this does not seem like a very exciting proposition, and newcomers to the concept often wonder what difference such an apparently obscure part of software licensing could make.
 
 However, because open source software (often, although not always, available at no cost, and referred to as Free and Open Source Software or FOSS) can be modified by anybody it offers a number of advantages over traditional proprietary software.
