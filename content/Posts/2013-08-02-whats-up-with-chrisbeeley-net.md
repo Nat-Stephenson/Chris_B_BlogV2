@@ -3,10 +3,8 @@ author: chrisbeeley
 categories:
 - Uncategorized
 date: "2013-08-02T17:51:44Z"
-guid: http://chrisbeeley.net/?p=462
 id: 462
 title: What&#8217;s up with chrisbeeley.net?
-url: /?p=462
 ---
 
 I’ve had my own server for a little while now, with a very scabby and unattractive webpage on it, some Java I haven’t got round to turning into an applet, a couple of random Shiny apps, and that’s about it.

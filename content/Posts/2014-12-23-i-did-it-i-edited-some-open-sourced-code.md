@@ -3,10 +3,8 @@ author: chrisbeeley
 categories:
 - Uncategorized
 date: "2014-12-23T21:46:03Z"
-guid: http://chrisbeeley.net/?p=710
 id: 710
 title: I did it! I edited some open sourced code!
-url: /?p=710
 ---
 
 I do try to promote the benefits of open source wherever I go, and one of these many benefits is, of course, the ability of endusers or intermediate parties to modify the source code to make changes to the software. A couple of times I have been dismissed by members of the closed source contingent who mock the idea that individuals who work outside of the IT world (e.g. in healthcare, my own area) would sit down and modify or even read reams of source code.
