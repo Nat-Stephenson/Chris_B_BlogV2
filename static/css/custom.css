@@ -6,9 +6,10 @@
   margin: 2em auto 0 auto;
   max-width: 1200px;
 }
+/* Jedi theme color updates */
 .blog-card {
   background: rgba(0,0,0,0.92);
-  border: 2px solid #ff2222;
+  border: 2px solid #00bfff;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.5);
   padding: 2em 1.5em 1.5em 1.5em;
@@ -22,31 +23,35 @@
 }
 .blog-card:hover {
   transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 8px 32px #ff2222cc;
+  box-shadow: 0 8px 32px #00bfffcc;
   border-color: #ffe81f;
 }
+
 .blog-card-title {
-  color: #ff2222;
+  color: #00bfff;
   font-family: 'Share Tech Mono', monospace, Arial, sans-serif;
   font-size: 1.3em;
   font-weight: 700;
-  text-shadow: 1px 1px 8px #000, 0 0 10px #ff2222;
+  text-shadow: 1px 1px 8px #000, 0 0 10px #00bfff;
   text-decoration: none;
   margin-bottom: 0.5em;
-  border-bottom: 1px solid #ff2222;
+  border-bottom: 1px solid #00bfff;
   transition: color 0.2s, border 0.2s;
 }
 .blog-card-title:hover, .blog-card-title:focus {
   color: #ffe81f;
   border-bottom: 1px solid #ffe81f;
 }
+
+/* Jedi blue for blog card date and description */
+
 .blog-card-date {
-  color: #fff;
+  color: #00bfff;
   font-size: 0.95em;
   margin-bottom: 1em;
 }
 .blog-card-desc {
-  color: #ffe81f;
+  color: #00bfff;
   font-size: 1em;
   text-align: center;
   margin-top: 0.5em;
@@ -70,8 +75,9 @@
   color: #ffe81f;
   text-decoration: underline;
 }
+/* Jedi blue for post meta */
 .post-meta {
-  color: #ff2222;
+  color: #00bfff;
   font-size: 0.95em;
   margin-bottom: 1.5em;
 }
@@ -135,6 +141,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+/* Base style for all nav buttons */
 .nav-btn {
   display: inline-block;
   background: rgba(0,0,0,0.85);
@@ -149,6 +156,27 @@ body {
   letter-spacing: 1.5px;
   box-shadow: 0 2px 12px #000;
   transition: background 0.2s, color 0.2s, border 0.2s;
+}
+/* Jedi multicolor nav buttons */
+.nav-btn:nth-child(1) {
+  color: #00bfff;
+  border-color: #00bfff;
+}
+.nav-btn:nth-child(2) {
+  color: #00ff99;
+  border-color: #00ff99;
+}
+.nav-btn:nth-child(3) {
+  color: #ffe81f;
+  border-color: #ffe81f;
+}
+.nav-btn:nth-child(4) {
+  color: #ff66cc;
+  border-color: #ff66cc;
+}
+.nav-btn:nth-child(5) {
+  color: #ff9933;
+  border-color: #ff9933;
 }
 .nav-btn:hover, .nav-btn:focus {
   background: #ffe81f;
