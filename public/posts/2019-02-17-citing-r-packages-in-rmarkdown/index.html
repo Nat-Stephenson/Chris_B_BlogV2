@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Citing R packages in RMarkdown</h1>
+  <div class="post-meta">2019-02-17</div>
+  <div class="post-body">
+    <p>I haven’t really done much in the way of citing papers in the last couple of years, I’ve spent my time either messing around with Shiny servers or databases or writing RMarkdown reports- and being horribly ill, of course, haha!- see this blog, passim. Don’t worry, I’m as fit as a flea now 🙂</p>
+<p>Anyway, I’ve been citing one or two papers today and I’ve found it very easy to cite both papers and R packages in RMarkdown, so I’m here to tell you not to ignore it because it’s too hard, just do it. Step one: add the bottom line of the following to your YAML header:</p>
+<p>—<br>
+title: “Validation of complexity scores in AMH”<br>
+author: “Chris Beeley”<br>
+date: “21 January 2019”<br>
+output: html_document<br>
+bibliography: bibliography.bib<br>
+—</p>
+<p>Now create a file called bibliography.bib in the same directory as the RMarkdown. You can either download the .bib off journal websites, or use a program dedicated for it (I didn’t bother, I’m just writing a few sides, not a thesis), or you can even write your own pretty easily by just looking at the template for a similar type of reference and hand editing the field. Here’s my hand edited bit for a paper that I referenced which didn’t have any snazzy download .bib on the website:</p>
+<p>@Article{Butler2005,<br>
+author = “Butler, J.”,<br>
+title = “Monitoring Community Mental Health Team Caseloads: a systematic audit of practitioner caseloads using a criterion based audit tool”,<br>
+journal = “Advancing Practice in Bedfordshire”,<br>
+year = “2005”,<br>
+volume=”2″,<br>
+number=”3″,<br>
+pages=”95–105″<br>
+}</p>
+<p>You cite this in your RMarkdown using whatever identifier is on the top line, in this case I put the Butler2005 there, and in the RMarkdown you just write @Butler2005.</p>
+<p>You can cite R by just typing citation() into the console and copying the .bib into your .bib file, and you can cite, say, the psych package by typing citation(“psych”).</p>
+<p>Packages will look funny when you cite them because they’re usually referred to by name, not by author, so rewrite your reference like this:</p>
+<p>with assistance from the psych [-@psych2018] package.</p>
+<p>The minus excludes it from the actual text while still including it in the references at the end.</p>
+<p>Just press “knit” and it will put the references in automatically, so you probably want to write</p>
+<p>## References</p>
+<p>above the end line or something like that.</p>
+<p>That’s it! I just learned it from scratch, did it, and wrote this blog post in 10 minutes so you really have no excuse now, do you 😉 ?</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

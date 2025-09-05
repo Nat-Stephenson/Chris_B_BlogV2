@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Concatenating text nicely with commas and &amp;#8220;and&amp;#8221;s</h1>
+  <div class="post-meta">2017-01-12</div>
+  <div class="post-body">
+    <p>Wow, this blog is quiet at the moment. I can’t even remember if I’ve written this anywhere but I had a liver transplant in May and I’ve been repeatedly hospitalised with complications ever since. So work and life are a little slow. I’m hoping to be back to full health in a few weeks.</p>
+<p>Anyway, I was just writing some Shiny code and I have a dynamic text output consisting of one, two, or many pieces of text which needs to have commas and “and”s added to make natural English, like so:</p>
+<p>Orange. Orange and apple. Orange, apple, and banana. Orange, apple, banana, and grapefruit.</p>
+<p>I really toyed with the idea of just using commas and not worrying about “and”s but I decided that it was only a quick job and it would make the world more attractive. So if you’ve just Googled this, here’s my solution:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+theWords = list(LETTERS[1], LETTERS[2:3], LETTERS[4:6])
+
+vapply(theWords, function(x) {
+
+if(length(x) == 1){
+
+x = x # Do nothing!
+
+} else if(length(x) == 2){
+
+x = paste0(x[1], &#34; and &#34;, x[2])
+} else if(length(x) &gt; 2){
+
+x = paste0(paste0(x[-length(x)], &#34;, &#34;, collapse = &#34;&#34;),
+&#34;and &#34;, x[length(x)])
+}
+
+}, &#34;A&#34;)
+</code></pre><p>Notice the use of vapply, not lapply, because Thou Shalt Use Vapply.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

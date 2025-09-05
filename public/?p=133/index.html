@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Simulating data</h1>
+  <div class="post-meta">2011-10-03</div>
+  <div class="post-body">
+    <p>I try to publish as much of my work as I can on the internet, where the people who own the data agree (my little bit of the website is <a href="http://www.institutemh.org.uk/-about-us-/our-evaluation-service">here</a>) but very often I can’t publish the data because of issues with ongoing projects, other publications, various levels of confidentiality of data, and so on.</p>
+<p>So I’ve decided to try to simulate the data whenever there is an issue with publication. It’s very easy and it’s an excellent way for me to be able to show people my work without any of the issues that come from showing real data. The code is below, it comes in two parts for the first set of variables because we fiddled with the questionnaire a bit after Time 8 in the dataset.</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+mydatafirst[mydatafirst$Time&gt;8,
+  which(names(mydatafirst)==&#34;Service&#34;) : which(names(mydatafirst)==&#34;Therapist&#34;)] = 
+    apply(mydatafirst[mydatafirst$Time&gt;8, which(names(mydatafirst)==&#34;Service&#34;) : which(names(mydatafirst)==&#34;Therapist&#34;)],
+      2, function (x) sample(x[!is.na(x)], length(mydatafirst$Service[mydatafirst$Time&gt;8]), replace=TRUE))
+
+mydatafirst[mydatafirst$Time&lt;9,
+  which(names(mydatafirst)==&#34;Service&#34;):which(names(mydatafirst)==&#34;Therapist&#34;)] = 
+    apply(mydatafirst[mydatafirst$Time&lt;9,which(names(mydatafirst)==&#34;Service&#34;) : 
+      which(names(mydatafirst)==&#34;Therapist&#34;)],
+      2, function (x) sample(x[!is.na(x)], length(mydatafirst$Service[mydatafirst$Time&lt;9]), replace=TRUE))
+
+mydatafirst[c(which(names(mydatafirst)==&#34;Imp1&#34;), which(names(mydatafirst)==&#34;Best1&#34;))] =
+  apply(mydatafirst[c(which(names(mydatafirst)==&#34;Imp1&#34;), which(names(mydatafirst)==&#34;Best1&#34;))], 2, function (x)
+    sample(x[!is.na(x)], length(mydatafirst$Imp1), replace=TRUE))
+</code></pre><p>Thanks to the magic of R, and in particular the Sweave and Brew packages, all I need to do is insert these four lines into the code, re-run the report, and I have a nicely simulated dataset. I must confess I didn’t use R to convert the comments to gibberish, it was easier to download them from <a href="www.random.org">here</a>, but if this website didn’t exist then I certainly could have used R to do this very easily.</p>
+<p>Something else that R and Sweave are really helping me with at the moment is making it possible to start to analyse data and compile reports before the data comes in. Because Sweave will automatically put together the statistics and graphs for me as I go along, it frees me up to just work on the data, share the progress with people as it comes along, and then put together the final analysis when all the data is collected, without having to manually re-write all the statistics and copy and paste all the graphs all the way through. I’ll post about the usefulness of Sweave and how it helps with workflow another time.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

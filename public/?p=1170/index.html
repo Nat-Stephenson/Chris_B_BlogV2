@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Drawing stacked barcharts the tidyverse way</h1>
+  <div class="post-meta">2018-11-13</div>
+  <div class="post-body">
+    <p>Don’t judge me, but I do spend quite a lot of time making stacked barcharts of survey data. I’m trying to go full tidyverse (see this blog, passim) and there is a very neat way of doing it in the tidyverse which is very easy to expand out into functions, or purrr, or whatever. Of course, me being me I can never remember what it is so I end up reading the same SO answers over and over again.</p>
+<p>So here, for all time, and mainly for my benefit, is the code to take a dataframe with the same Likert items over and over (in this case, Always/ Usually/ Sometimes/ Never) and find the proportions, change to percentages, make the x axis labels at an angle so they fit, put the stacking in the right order, and remove missing values. It’s pretty much completely generic, just give it a dataframe and the factor levels and it will work with any dataset of lots of repeated Likert items.</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+theData %&gt;% 
+  gather() %&gt;% 
+  group_by(key) %&gt;% 
+  count(value) %&gt;%
+  filter(!is.na(value)) %&gt;% 
+  mutate(prop = prop.table(n) * 100) %&gt;%
+  mutate(value = factor(value, levels = c(&#34;Always&#34;, &#34;Usually&#34;, &#34;Sometimes&#34;, &#34;Never&#34;), 
+                        labels = c(&#34;Always&#34;, &#34;Usually&#34;, &#34;Sometimes&#34;, &#34;Never&#34;))) %&gt;% 
+  ggplot(aes(x = key, y = prop, fill = value, order = -as.numeric(prop))) + 
+  geom_bar(stat = &#34;identity&#34;) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+</code></pre><p>Et voila!</p>
+<p><img alt="Rplot01" loading="lazy" src="https://chrisbeeley.net/wp-content/uploads/2018/11/Rplot01.png"></p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

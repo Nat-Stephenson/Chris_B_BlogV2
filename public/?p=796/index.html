@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Make your own HTML tables in R</h1>
+  <div class="post-meta">2016-01-13</div>
+  <div class="post-body">
+    <p>I’ve avoid writing HTML tables by hand in R, reasoning that it would be far too complicated. But the problem with using packages like pander and rmarkdown, much as I love those packages, is you can’t fine tune the outputs. So if a colleague asks you to add little extra touches for a report you can’t really do it.</p>
+<p>So it was a nice surprise to find that it’s actually not that hard. Here’s a table with 3 columns which looks very nice with bootstrap (don’t know what the styling options are on WordPress so it just looks unformatted here)</p>
+<table>
+  <thead>
+      <tr>
+          <th>Service quality</th>
+          <th>95</th>
+          <th>90</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Promoter</td>
+          <td>90</td>
+          <td>85</td>
+      </tr>
+      <tr>
+          <td>SUCE returns</td>
+          <td>1000</td>
+          <td>1200</td>
+      </tr>
+  </tbody>
+</table>
+<p>Code:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+paste0(c(&#34;&lt;table class=&#39;table table-striped&#39;&gt;&#34;, 
+  &#34;&lt;th&gt;Score&lt;/th&gt;&lt;th&gt;Current quarter&lt;/th&gt;&lt;th&gt;Previous quarter&lt;/th&gt;&#34;,
+  &#34;&lt;tr&gt;&#34;, paste0(&#34;&lt;td&gt;&#34;, c(&#34;Service quality&#34;, 95, 90), &#34;&lt;/td&gt;&#34;), &#34;&lt;/tr&gt;&#34;,
+  &#34;&lt;tr&gt;&#34;, paste0(&#34;&lt;td&gt;&#34;, c(&#34;Promoter&#34;, 90, 85), &#34;&lt;/td&gt;&#34;), &#34;&lt;/tr&gt;&#34;,
+  &#34;&lt;tr&gt;&#34;, paste0(&#34;&lt;td&gt;&#34;, c(&#34;SUCE returns&#34;, 1000, 1200), &#34;&lt;/td&gt;&#34;), &#34;&lt;/tr&gt;&#34;,
+  &#34;&lt;/table&gt;&#34;), collapse = &#34;&#34;)
+</code></pre><p>Obviously you can make it dynamic pretty easily, the table above is from a Shiny app I’m currently developing, I’ve just replaced the numbers with static values for the blog post. So the next time someone asks me to style a table it should be pretty easy.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

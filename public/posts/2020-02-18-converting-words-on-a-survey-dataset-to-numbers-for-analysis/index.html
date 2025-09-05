@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Converting words on a survey dataset to numbers for analysis</h1>
+  <div class="post-meta">2020-02-18</div>
+  <div class="post-body">
+    <p>As always, I have very little time for blogging (sorry) but I just came up with a neat way of converting “Strongly Agree”, “Always”, all that stuff that you get on survey based datasets into numbers ready for analysis. It’s automatic, so it will play havoc with any word based questions- analyse them in a separate script.</p>
+<p>Here it is</p>
+<pre tabindex="0"><code>library(tidyverse)
+
+survey &lt;- map_df(survey, function(x) {
+  
+  if(sum(grepl(&#34;Agree&#34;, unlist(x), ignore.case = TRUE)) &gt; 0) {
+    
+    return(case_when(
+      x == &#34;Strongly agree&#34; ~ 10,
+      x == &#34;Agree&#34; ~ 7.5,
+      x == &#34;Neither agree nor disagree&#34; ~ 5,
+      x == &#34;Disagree&#34; ~ 2.5,
+      x == &#34;Strongly disagree&#34; ~ 0,
+      TRUE ~ NA_real_
+    ))
+  } else if(sum(grepl(&#34;Always&#34;, unlist(x), ignore.case = TRUE)) &gt; 0){
+    
+    return(case_when(
+      x == &#34;Always&#34; ~ 10,
+      x == &#34;Often&#34; ~ 7.5,
+      x == &#34;Sometimes&#34; ~ 5,
+      x == &#34;Rarely&#34; ~ 2.5,
+      x == &#34;Never&#34; ~ 0,
+      TRUE ~ NA_real_
+    ))
+  
+  } else if(sum(grepl(&#34;Dissatisfied&#34;, unlist(x), ignore.case = TRUE)) &gt; 0){
+    
+    return(case_when(
+      x == &#34;Very satisfied&#34; ~ 10,
+      x == &#34;Satisfied&#34; ~ 7.5,
+      x == &#34;Neither satisfied nor dissatisfied&#34; ~ 5,
+      x == &#34;Dissatisfied&#34; ~ 2.5,
+      x == &#34;Very dissatisfied&#34; ~ 0,
+      TRUE ~ NA_real_
+    ))
+
+  } else {
+    
+    return(x)
+  }
+})
+</code></pre><p>Glorious. R makes it too easy, really, I think, sometimes 🙂</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

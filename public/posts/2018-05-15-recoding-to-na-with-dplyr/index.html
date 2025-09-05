@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Recoding to NA with dplyr</h1>
+  <div class="post-meta">2018-05-15</div>
+  <div class="post-body">
+    <p>Just very quickly again, still horribly busy, but this has been annoying me for ages and I finally figured it out. When you’re using recode from dplyr, you can’t recode to NA if you’re recoding to other things that aren’t NA, because it complains that the types aren’t compatible. So don’t do this:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+  mutate(Relationship = recode(Relationship, &#34;Co-Habiting&#34; = &#34;Co&#34;, 
+    &#34;Divorced&#34; = &#34;Di&#34;, &#34;Married&#34; = &#34;Ma&#34;, &#34;Civil partnership&#34; = &#34;CI&#34;
+    &#34;Single&#34; = &#34;Si&#34;, &#34;Widowed&#34; = &#34;Wi&#34;, &#34;Separated&#34; = &#34;Se&#34;, 
+    &#34;Prefer not to say&#34; = NA))
+</code></pre><p>Use na_if() instead:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+  mutate(Relationship = recode(Relationship, &#34;Co-Habiting&#34; = &#34;Co&#34;, 
+    &#34;Divorced&#34; = &#34;Di&#34;, &#34;Married&#34; = &#34;Ma&#34;, &#34;Single&#34; = &#34;Si&#34;, 
+    &#34;Widowed&#34; = &#34;Wi&#34;, &#34;Separated&#34; = &#34;Se&#34;, &#34;Civil partnership&#34; = &#34;CI&#34;)) %&gt;%
+  mutate(Relationship = na_if(Relationship, &#34;Prefer not to say&#34;, NA))
+</code></pre>
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

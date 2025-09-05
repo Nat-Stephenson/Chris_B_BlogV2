@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Scraping the RStudio webinar list</h1>
+  <div class="post-meta">2018-03-08</div>
+  <div class="post-body">
+    <p>I only just found this list of <a href="https://www.rstudio.com/resources/webinars/">RStudio webinars</a>, there’s loads of stuff on there, I really need to plow through a lot of it. What I really wanted was a list of them with links that I could archive and edit and rearrange so I could show which ones I am interested in, which I’ve already watched, and so on.</p>
+<p>Well, if you’ve got a problem, and no-one else can help, then maybe you need… The R Team.</p>
+<!-- raw HTML omitted -->
+<p>Oh yes, and you’ll also need selector gadget, which is described brilliantly in this <a href="https://cran.r-project.org/web/packages/rvest/vignettes/selectorgadget.html">selector gadget vignette</a>.</p>
+<p>Once you’ve got all that, the code writes itself. The only wrinkle I ironed out was that some of the HTML paths were relative, not absolute, so I paste http://blah on the front of those ones, as you’ll see.</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+library(rvest)
+
+rstudio = read_html(&#34;https://www.rstudio.com/resources/webinars/&#34;)
+
+linkText = rstudio %&gt;%
+  html_nodes(&#39;.toggle-content a&#39;) %&gt;%
+  html_text()
+
+linkURL = rstudio %&gt;%
+  html_nodes(&#34;.toggle-content a&#34;) %&gt;%
+  html_attr(&#34;href&#34;)
+
+linkURL[substr(linkURL, 1, 4) != &#34;http&#34;] = 
+  paste0(&#34;https://www.rstudio.com&#34;, 
+         linkURL[substr(linkURL, 1, 4) != &#34;http&#34;])
+
+cat(paste0(&#34;&lt;a href = &#34;, linkURL, &#34;&gt;&#34;, 
+           linkText, &#34;&lt;/a&gt;&lt;br&gt;&#34;), file = &#34;webinar.html&#34;)
+</code></pre><p>Done! Now all I did was open the resulting file and paste it into Evernote, which kept the links and text together, as you’d expect, and I can now cut and paste and markup to my heart’s desire.</p>
+<p>I love it when a plan comes together.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Sweave on Chris Beeleys Blog</title>
+    <link>http://localhost:1313/tags/sweave/</link>
+    <description>Recent content in Sweave on Chris Beeleys Blog</description>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 Oct 2011 06:22:03 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/sweave/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Simulating data</title>
+      <link>http://localhost:1313/?p=133/</link>
+      <pubDate>Mon, 03 Oct 2011 06:22:03 +0000</pubDate>
+      <guid>http://localhost:1313/?p=133/</guid>
+      <description>&lt;p&gt;I try to publish as much of my work as I can on the internet, where the people who own the data agree (my little bit of the website is &lt;a href=&#34;http://www.institutemh.org.uk/-about-us-/our-evaluation-service&#34;&gt;here&lt;/a&gt;) but very often I can’t publish the data because of issues with ongoing projects, other publications, various levels of confidentiality of data, and so on.&lt;/p&gt;
+&lt;p&gt;So I’ve decided to try to simulate the data whenever there is an issue with publication. It’s very easy and it’s an excellent way for me to be able to show people my work without any of the issues that come from showing real data. The code is below, it comes in two parts for the first set of variables because we fiddled with the questionnaire a bit after Time 8 in the dataset.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

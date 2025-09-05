@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>useR conference update</h1>
+  <div class="post-meta">2011-08-15</div>
+  <div class="post-body">
+    <p>I’m at the <a href="http://www.warwick.ac.uk/statsdept/user-2011/">useR! conference</a> so I’ll be blogging every day with at least one thing that I learned.</p>
+<p>The first thing, which I think I half-knew and had also half-learned from bitter experience, is that all the R experts seem to use Linux, Ubuntu in the case of the two people who ran the tutorials I attended today. I already dual-boot Windows and Linux and I think over time I’m going to reduce Windows to the operating system on which I play games and check my work email (which I can only get to run on Windows due to security software requirements).</p>
+<p>The second thing is a neat way to plot regression when the outcome is binary. I’ve often wondered how I can visualise what’s going on when you have a horrible graph that looks like this:</p>
+<p><a href="http://chrisbeeley.net/wp-content/uploads/2011/08/ugly1.png"><img loading="lazy" src="http://chrisbeeley.net/wp-content/uploads/2011/08/ugly1.png?w=300" title="Ugly"></a></p>
+<p>It’s very simple, and I now know thanks to Douglas Bates’s excellent lme4 tutorial. Draw a graph like this (points are suppressed, you can include them if you want):</p>
+<p><a href="http://chrisbeeley.net/wp-content/uploads/2011/08/nice1.png"><img loading="lazy" src="http://chrisbeeley.net/wp-content/uploads/2011/08/nice1.png?w=300" title="Nice"></a></p>
+<p>Just a few lines of code for the whole kit and caboodle:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+library(lattice)
+
+Outcome=sample(0:1, 100, replace=TRUE) # simulate data
+
+Predictor=runif(100)*100 # simulate data
+
+plot(Predictor, Outcome) # ugly graph
+
+xyplot(Outcome~ Predictor, type = c(&amp;quot;g&amp;quot;, &amp;quot;smooth&amp;quot;), ylab = &amp;quot;Outcome&amp;quot;, xlab = &amp;quot;Predictor&amp;quot;) # useful graph
+</code></pre><p>You can simulate the data properly so that there is an actual correlation if you want to (e.g. <a href="http://www.biostat.wustl.edu/archives/html/s-news/2002-04/msg00103.html">here</a>) but I thought you’d spare me the bother- you get the idea.</p>
+<p>Oh yes, I did learn one other thing today- they’re called packages, <em>not</em> libraries. One for the pedants among you.</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

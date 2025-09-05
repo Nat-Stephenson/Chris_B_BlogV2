@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Produce tables in loop</h1>
+  <div class="post-meta">2018-10-16</div>
+  <div class="post-body">
+    <p>Another one for me before I forget, I seem to have terrible problems writing headings and tables in a loop in RMarkdown. Everything gets crushed together because the line returns don’t seem to work properly and either the table or the headings get mangled. Well here it is, the thing I just did that worked:</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+for(i in 1:2){
+
+  cat(&#34;Heading &#34;, i, &#34;\n&#34;)
+  
+  cat(&#34;===========================&#34;)
+  
+  pandoc.table(iris)
+}
+</code></pre><p>That’s it! Don’t put any other weird “\n”s or [HTML line breaks which I now realise WordPress will interpret literally] in. You don’t need them!</p>
+
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Beeleys Blog</title>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/posts/">Blog</a>
+  <a class="nav-btn" href="https://github.com/ChrisBeeley" target="_blank" rel="noopener">GitHub</a>
+</nav>
+
+  </header>
+  <main>
+    
+<article class="post-content-box">
+  <h1>Querying Google analytics data with R</h1>
+  <div class="post-meta">2014-09-09</div>
+  <div class="post-body">
+    <p>This post is in response to a question on Twitter, but it may be of interest to others. I produced a Shiny app for querying Google Analytics data for my <a href="https://www.packtpub.com/web-development/web-application-development-r-using-shiny">book</a>. The data on the live version which lives <a href="http://chrisbeeley.net:8080/shiny/GA/">here</a> is automatically pulled in via the API each time the application is run. That code cannot live on my <a href="https://github.com/ChrisBeeley">GitHub</a> because it needs the username and password for the API. So I’m reproducing it here. It’s very simple and is based on the wonderful R package rga which can be found <a href="https://github.com/skardhamar/rga">here</a>. Obviously the XXXXXXXs have got real things in the real version, this is the redacted version.</p>
+<p>It’s pretty self explanatory really with the documentation for the package, so I won’t labour it by explaining any of the code. The only thing perhaps of note is the where=”ga.rga” instruction in the rga.open() call, this allows you to store a file called ga.rga which stores the authentication credentials of your application and means you don’t need to keep entering the code that Google gives you the first time you run it.</p>
+<p>I’m happy to get questions as comments to this blog post or on my Twitter @chrisbeeley.</p>
+<pre tabindex="0"><code>&lt;pre class=&#34;brush: r; title: ; notranslate&#34; title=&#34;&#34;&gt;
+
+library(rga)
+
+rga.open(instance = &#34;ga&#34;, where=&#34;ga.rga&#34;, 
+         client.id = &#34;XXXXXX.apps.googleusercontent.com&#34;, 
+         client.secret = &#34;XXXXXX&#34;)
+
+analytics = ga$getData(XXXXXX, batch = TRUE,
+                       start.date = &#34;2013-01-01&#34;,
+                       metrics = &#34;ga:visitors, ga:visits, ga:bounces, ga:timeOnSite&#34;,
+                       dimensions = &#34;ga:dateHour, ga:networkDomain&#34;,
+                       sort = &#34;&#34;, filters = &#34;&#34;, segment = &#34;&#34;)
+
+analytics$Date = as.Date(paste0(substr(analytics$dateHour, 1, 4), &#34;/&#34;,
+                                substr(analytics$dateHour, 5, 6), &#34;/&#34;, substr(analytics$dateHour, 7, 8)))
+
+analytics$Hour = as.numeric(substr(analytics$dateHour, 9, 10))
+
+# change domain
+
+analytics$Domain = factor(recode(analytics$networkDomain, &#39;&#34;nhs.uk&#34; = &#34;NHS&#34;; else = &#34;Other&#34;&#39;))
+</code></pre>
+  </div>
+</article>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Chris Beeleys Blog</p>
+  </footer>
+</body>
+</html>
