@@ -1,32 +1,30 @@
----
-author: chrisbeeley
-categories:
-- Uncategorized
-date: "2011-08-02T15:59:52Z"
-guid: http://chrisbeeleyimh.wordpress.com/?p=25
-id: 25
-tags:
-- data visualisation
-- patient survey
-- text mining
-- word clouds
-title: Fun with wordclouds
-url: /?p=25
----
++++
+draft = false
+title = "Fun with Wordclouds"
+author = "Chris Beeley"
+date = '2011-08-02T15:59:52Z'
+categories = ["Uncategorized"]
+tags = ["data visualisation", "patient survey", "text mining", "word clouds"]
+id = 25
+guid = "http://chrisbeeleyimh.wordpress.com/?p=25"
+url = "/?p=25"
++++
+
+
 
 As always, I’m late to this party, and wordclouds have come under fire in recent times, e.g. here: [drewconway.com](http://www.drewconway.com/zia/?p=2624). From my point of view they’re eye-catching, and I hope that by putting them up on a website or in a report they might cause people to linger and look in more detail at other pieces of data and visualisation. That’s all I’m going to say for now, I’m sure I’ll talk again about what’s attractive to data scientists and statisticians and what’s attractive to the general public, but let’s leave it for now.
-
+++
 I am looking at interesting ways of looking at the patient survey (see previous post) at the moment and I thought I would have a go at a wordcloud. Thanks to the wonderful people producing packages for R (the tm and wordcloud packages, many thanks to both!), it’s easy. I nicked a bit of code from another blog (thanks [One R tip a day](http://onertipaday.blogspot.com/2011/07/word-cloud-in-r.html)!) and pretty soon I had my own. It’s from two areas of the Trust, featuring the things people like about our services.
-
-Here’s the code:
-
-```
-<pre class="brush: r; title: ; notranslate" title="">
-
-mydata=subset(mydatafirst, Var1==0) # slice the data by area
-
-mycorpus=Corpus(DataframeSource(data.frame(mydata[-is.na(mydata$Best),34]))) # make a text corpus for the tm package out of a data frame, removing missing values at the same time
-
+title = "Fun with wordclouds"
+author = "chrisbeeley"
+date = '2011-08-02T15:59:52Z'
+categories = ["Uncategorized"]
+tags = ["data visualisation", "patient survey", "text mining", "word clouds"]
+id = 25
+guid = "http://chrisbeeleyimh.wordpress.com/?p=25"
+url = "/?p=25"
+---
+---
 mycorpus &lt;- tm_map(mycorpus, removePunctuation) # remove all the puncuation
 mycorpus &lt;- tm_map(mycorpus, tolower) # make everything lower case
 mycorpus &lt;- tm_map(mycorpus, function(x) removeWords(x, c(stopwords(&quot;english&quot;), &quot;none&quot;, &quot;ive&quot;, &quot;dont&quot;, &quot;etc&quot;))) # remove words without meaning, many of which are provided by the stopwords(&quot;english&quot;) function
@@ -39,6 +37,7 @@ v &lt;- sort(rowSums(m),decreasing=TRUE)
 d &lt;- data.frame(word = names(v),freq=v)
 
 par(mfrow=c(1,2))
+---
 
 wordcloud(d$word,d$freq,c(3.5,.5),2,100,TRUE,.15, terrain.colors(5),vfont=c(&quot;sans serif&quot;,&quot;plain&quot;))
 

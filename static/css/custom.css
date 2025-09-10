@@ -1,43 +1,53 @@
+/* Jedi alternating card backgrounds */
+.jedi-blue {
+  background: linear-gradient(135deg, #001f3f 60%, #00bfff 100%);
+  border-color: #00bfff;
+}
+.jedi-green {
+  background: linear-gradient(135deg, #003f1f 60%, #00ff99 100%);
+  border-color: #00ff99;
+}
 .blog-card-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2em;
-  margin: 2em auto 0 auto;
-  max-width: 1200px;
-}
-.blog-card {
-  background: rgba(0,0,0,0.92);
-  border: 2px solid #ff2222;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
-  padding: 2em 1.5em 1.5em 1.5em;
-  min-width: 270px;
-  max-width: 340px;
-  flex: 1 1 270px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.blog-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 8px 32px #ff2222cc;
-  border-color: #ffe81f;
-}
-.blog-card-title {
-  color: #ff2222;
-  font-family: 'Share Tech Mono', monospace, Arial, sans-serif;
-  font-size: 1.3em;
-  font-weight: 700;
-  text-shadow: 1px 1px 8px #000, 0 0 10px #ff2222;
-  text-decoration: none;
-  margin-bottom: 0.5em;
-  border-bottom: 1px solid #ff2222;
-  transition: color 0.2s, border 0.2s;
-}
-.blog-card-title:hover, .blog-card-title:focus {
-  color: #ffe81f;
+  /* Jedi theme colors */
+  .blog-card {
+    background: rgba(0,0,0,0.92);
+    border: 2px solid #00bfff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    padding: 2em 1.5em 1.5em 1.5em;
+    min-width: 270px;
+    max-width: 340px;
+    flex: 1 1 270px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .blog-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 32px #00bfffcc;
+    border-color: #ffe81f;
+  }
+  .blog-card-title {
+    color: #00bfff;
+    font-family: 'Share Tech Mono', monospace, Arial, sans-serif;
+    font-size: 1.3em;
+    font-weight: 700;
+    text-shadow: 1px 1px 8px #000, 0 0 10px #00bfff;
+    text-decoration: none;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid #00bfff;
+    transition: color 0.2s, border 0.2s;
+  }
+  .blog-card-title:hover, .blog-card-title:focus {
+    color: #ffe81f;
+    border-bottom: 1px solid #ffe81f;
+  }
+  .post-meta {
+    color: #00bfff;
+    font-size: 0.95em;
+    margin-bottom: 1.5em;
+  }
   border-bottom: 1px solid #ffe81f;
 }
 .blog-card-date {
@@ -135,11 +145,12 @@ body {
   justify-content: center;
   align-items: center;
 }
+/* Navbar button base style */
 .nav-btn {
   display: inline-block;
   background: rgba(0,0,0,0.85);
-  color: #ffe81f;
-  border: 2px solid #ffe81f;
+  color: #fff;
+  border: 2px solid #fff;
   border-radius: 10px;
   padding: 1em 2.2em;
   margin: 0 1em;
@@ -150,8 +161,33 @@ body {
   box-shadow: 0 2px 12px #000;
   transition: background 0.2s, color 0.2s, border 0.2s;
 }
-.nav-btn:hover, .nav-btn:focus {
+.nav-home {
+  background: transparent;
+  color: #00bfff;
+  border-color: #00bfff;
+}
+.nav-home:hover, .nav-home:focus {
+  background: #00bfff;
+  color: #fff;
+  border-color: #00bfff;
+}
+.nav-blog {
+  background: transparent;
+  color: #00ff99;
+  border-color: #00ff99;
+}
+.nav-blog:hover, .nav-blog:focus {
+  background: #00ff99;
+  color: #111;
+  border-color: #00ff99;
+}
+.nav-github {
+  background: transparent;
+  color: #ffe81f;
+  border-color: #ffe81f;
+}
+.nav-github:hover, .nav-github:focus {
   background: #ffe81f;
   color: #111;
-  border: 2px solid #fff;
+  border-color: #ffe81f;
 }

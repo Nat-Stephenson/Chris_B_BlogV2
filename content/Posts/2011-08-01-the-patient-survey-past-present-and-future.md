@@ -1,16 +1,15 @@
----
-author: chrisbeeley
-categories:
-- Uncategorized
-date: "2011-08-01T14:55:47Z"
-guid: http://chrisbeeleyimh.wordpress.com/?p=8
-id: 8
-tags:
-- data visualisation
-- patient survey
-title: 'The patient survey: past, present and future'
-url: /?p=8
----
++++
+draft = false
+title = "The Patient Survey: Past, Present and Future"
+author = "Chris Beeley"
+date = '2011-08-01T14:55:47Z'
+categories = ["Uncategorized"]
+tags = ["data visualisation", "patient survey"]
+id = 8
+guid = "http://chrisbeeleyimh.wordpress.com/?p=8"
+url = "/?p=8"
++++
+
 
 Within my organisation we have something known as the Service User and Carer Experience Survey, often abbreviated to the SUCE, or in more natural spoken English, the patient survey. It’s a chance for the users of our services to tell us about our services and includes Likert-type “ticky box” questions about specific aspects of care as well as an open section in which they can give an area for improvement as well as something they like about the service. Results are published quarterly and reporting represents a major challenge- we report over about 100 teams, all organised into larger directorates and divisions, with each category having its own type of report. I’ve been involved right from the start and the process goes nicely from a How-Not-To-Do-It guide to a How-To guide.
 
