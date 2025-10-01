@@ -1,0 +1,22 @@
++++
+draft = false
+title = "Fun with Wordclouds"
+author = "Chris Beeley"
+date = '2011-08-02T15:59:52Z'
+categories = ["Uncategorized"]
+tags = ["data visualisation", "patient survey", "text mining", "word clouds"]
+id = 25
+guid = "http://chrisbeeleyimh.wordpress.com/?p=25"
++++
+
+As always, I’m late to this party, and wordclouds have come under fire in recent times, e.g. here: [drewconway.com](http://www.drewconway.com/zia/?p=2624). From my point of view they’re eye-catching, and I hope that by putting them up on a website or in a report they might cause people to linger and look in more detail at other pieces of data and visualisation. That’s all I’m going to say for now, I’m sure I’ll talk again about what’s attractive to data scientists and statisticians and what’s attractive to the general public, but let’s leave it for now.
+
+I am looking at interesting ways of looking at the patient survey (see previous post) at the moment and I thought I would have a go at a wordcloud. Thanks to the wonderful people producing packages for R (the tm and wordcloud packages, many thanks to both!), it’s easy. I nicked a bit of code from another blog (thanks [One R tip a day](http://onertipaday.blogspot.com/2011/07/word-cloud-in-r.html)!) and pretty soon I had my own. It’s from two areas of the Trust, featuring the things people like about our services.
+
+I adjusted by eye the scale which you can see in the 3rd parameter of the wordcloud function (making the second area a bit larger). There’s probably a better way, I will investigate further as I look more at what to do with all this data.
+
+Here’s the word cloud:
+
+[Rplot02](http://chrisbeeley.net/wp-content/uploads/2011/08/rplot02.pdf)
+
+Not bad for a few hours’ work! I’m hoping it will draw people in to look at more of the reporting that we do at any rate. Let me know what you think of it, and word clouds generally, in the comments.
