@@ -5,16 +5,18 @@
     {{ $posts := where (where .Site.RegularPages "Section" "blog") "Kind" "page" }}
     {{ if gt (len $posts) 0 }}
       {{ range $posts.GroupByDate "2006" "desc" }}
-        <h3 style="color:#ffe81f; font-family:'Share Tech Mono', monospace; font-size:1.8em; margin-top:2em; margin-bottom:1em; text-shadow:2px 2px 8px #000;">{{ .Key }}</h3>
-        <div class="blog-grid">
-          {{ range $i, $post := .Pages }}
-            <div class="blog-card {{ if modBool $i 2 }}jedi-blue{{ else }}jedi-green{{ end }}">
-              <h2><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h2>
-              <p class="blog-date">{{ $post.Date.Format "2006-01-02" }}</p>
-              {{ with $post.Params.description }}<p>{{ . }}</p>{{ end }}
-            </div>
-          {{ end }}
-        </div>
+        {{ if ne .Key "0001" }}
+          <h3 style="color:#ffe81f; font-family:'Share Tech Mono', monospace; font-size:1.8em; margin-top:2em; margin-bottom:1em; text-shadow:2px 2px 8px #000;">{{ .Key }}</h3>
+          <div class="blog-grid">
+            {{ range $i, $post := .Pages }}
+              <div class="blog-card {{ if modBool $i 2 }}jedi-blue{{ else }}jedi-green{{ end }}">
+                <h2><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h2>
+                <p class="blog-date">{{ $post.Date.Format "2006-01-02" }}</p>
+                {{ with $post.Params.description }}<p>{{ . }}</p>{{ end }}
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
       {{ end }}
     {{ else }}
       <p>No posts found.</p>
