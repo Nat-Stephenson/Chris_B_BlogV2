@@ -4,7 +4,7 @@ date = "2014-03-29T13:27:27Z"
 guid = "http://chrisbeeley.net/?p=609"
 id = 609
 title = "Produce Word documents, web pages, and pdfs in R quickly and easily"
-++ 
++++
 
 When I started using R in about 2009 [reproducible research](http://users.stat.umn.edu/~geyer/Sweave/) was a complete eye-opener for me. Statistical analyses should be reproducible both by the author of them and by the scientific community and by embedding the analysis and outputting code within a [literate programming](http://www-cs-faculty.stanford.edu/~uno/lp.html) framework such as [Sweave](http://en.wikipedia.org/wiki/Sweave) this was possible. Nearly everything I produce now, whether for regular reports on patient experience for the NHS Trust for which I work or for scientific papers is reproducible. These tools have saved me (and therefore my employer) hundreds of hours and they are all totally free.
 

@@ -4,7 +4,7 @@ date = "2014-06-09T17:21:08Z"
 guid = "http://chrisbeeley.net/?p=644"
 id = 644
 title = "Book review: Learning PHP, MySQL, JavaScript, and CSS, 2nd Edition"
-++ 
++++
 
 Full disclosure: I received this ebook free under the [O’Reilly Reader Review Programme](http://www.oreilly.com/reviews/).
 

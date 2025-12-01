@@ -6,7 +6,7 @@ id = 414
 publicize_reach = ["a:2:{s:7:'twitter';a:1:{i:906009;i:50;}s:2:'wp';a:1:{i:0;i:3;}}"]
 publicize_twitter_user = ["ChrisBeeley"]
 title = "Shiny application in a morning"
-++ 
++++
 
 Sort of apropos of nothing, really, this, but I was doing some research with some colleagues the other day and to help out I built a [shiny](http://www.rstudio.com/shiny/) application in a morning. Munging the data etc. took ages as it always does but once I actually had everything clean and tidy and working laying an interface on top was the easy bit. What a fantastic tool it really is, completely changed the way we work with data now we can just throw stuff on the internet and let people play around just in the morning. My sincere thanks to all the devs at [RStudio.](http://www.rstudio.com/)
 

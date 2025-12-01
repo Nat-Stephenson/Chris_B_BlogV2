@@ -4,7 +4,7 @@ date = "2013-11-30T09:11:30Z"
 guid = "http://chrisbeeley.net/?p=551"
 id = 551
 title = "The internet platform of the future"
-++ 
++++
 
 I recently sent the following to the New Statesman in response to a piece they recently carried which weighed up the likely fortunes of Google, Facebook, and Apple, and asked which would be the internet platform of the future. It is quite obvious to me that we already have the internet platform of the future, and it’s called Linux. They ran it, edited, in the letters page, but they don’t publish letters online so here, for the first time, live and unplugged, is the unexpurgated version.
 

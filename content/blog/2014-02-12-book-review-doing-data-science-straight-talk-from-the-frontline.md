@@ -4,7 +4,7 @@ date = "2014-02-12T17:10:20Z"
 guid = "http://chrisbeeley.net/?p=578"
 id = 578
 title = "Book review: Doing Data Science: Straight Talk from the Frontline"
-++ 
++++
 
 Book review  
 Doing Data Science: Straight Talk from the Frontline By Cathy O’Neil, Rachel Schutt  

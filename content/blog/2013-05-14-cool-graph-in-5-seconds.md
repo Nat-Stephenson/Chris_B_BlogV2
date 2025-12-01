@@ -6,7 +6,7 @@ id = 398
 publicize_reach = ["a:2:{s:7:'twitter';a:1:{i:906009;i:50;}s:2:'wp';a:1:{i:0;i:3;}}"]
 publicize_twitter_user = ["ChrisBeeley"]
 title = "Cool graph in 5 seconds"
-++ 
++++
 
 Cool graph in 5 seconds. Open R. Type
 

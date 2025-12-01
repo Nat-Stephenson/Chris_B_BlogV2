@@ -5,7 +5,7 @@ guid = "http://chrisbeeleyimh.wordpress.com/?p=412"
 id = 412
 publicize_twitter_user = ["ChrisBeeley"]
 title = "Change we need to see in Government and public service IT"
-++ 
++++
 
 There’s a lot of material here, including a 22 minute talk, but if you’re even remotely interested in IT in government and public services then please have a look here (you can get all three by clicking through, but I’ve extracted each link for you).
 

@@ -8,7 +8,7 @@ is_reblog = ["1"]
 post_id = ["131"]
 publicize_twitter_user = ["ChrisBeeley"]
 title = "The UK government pays me to write open source all day"
-++ 
++++
 
 Open source is creeping into government and my area, health, bit by bit (no pun intended!).
 

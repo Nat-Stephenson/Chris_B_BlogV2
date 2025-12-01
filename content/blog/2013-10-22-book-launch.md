@@ -4,7 +4,7 @@ date = "2013-10-22T19:02:44Z"
 guid = "http://chrisbeeley.net/?p=511"
 id = 511
 title = "Book launch"
-++ 
++++
 
 My book has just come out, [Web Application Development with R using Shiny](http://www.packtpub.com/web-application-development-with-r-using-shiny/book). It’s an introduction to the marvellous [Shiny](http://www.rstudio.com/shiny/) from the wonderful people at RStudio. Although the online documentation for Shiny does cover most of the things you might want to do with it the people who approached me about writing the book thought that having a more comprehensive guide with some worked examples would be useful. And I was inclined to agree. So I wrote the book in 3 months, which was one of the most brilliant and awful experiences of my entire life.
 

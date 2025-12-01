@@ -4,7 +4,7 @@ date = "2014-03-19T21:20:13Z"
 guid = "http://chrisbeeley.net/?p=603"
 id = 603
 title = "Buy my book from #Packt in the Buy One, Get One Free sale bit.ly/1j26nPN #Packt2k"
-++ 
++++
 
 [![2000th-Book-Home-Page-Banner](http://chrisbeeley.net/wp-content/uploads/2014/03/2000th-Book-Home-Page-Banner.png)](http://www.packtpub.com/?utm_source=referral&utm_medium=marketingPR&utm_campaign=2000thTitle)
 

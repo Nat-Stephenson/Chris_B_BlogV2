@@ -4,7 +4,7 @@ date = "2014-04-24T13:26:19Z"
 guid = "http://chrisbeeley.net/?p=530"
 id = 530
 title = "Useful R functions"
-++ 
++++
 
 Today seems as good a day as any to start archiving all the useful R functions I see scattered around the internet. And here seems as good a place as any to do it since I can see it and so can anyone else who is interested. Two to start, will add more as I get them. Credit to original authors, follow the link.
 

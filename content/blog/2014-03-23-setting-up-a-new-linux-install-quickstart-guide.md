@@ -4,7 +4,7 @@ date = "2014-03-23T14:41:14Z"
 guid = "http://chrisbeeley.net/?p=593"
 id = 593
 title = "Setting up a new Linux install, quickstart guide"
-++ 
++++
 
 This is another post which is designed both to help me as an aide-memoire and also to help anyone else out there who wants to set up a new Linux install quickly and easily.
 

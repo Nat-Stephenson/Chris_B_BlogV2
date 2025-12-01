@@ -4,7 +4,7 @@ date = "2013-10-19T10:47:41Z"
 guid = "http://chrisbeeley.net/?p=487"
 id = 487
 title = "Patient Opinion data made easy with R"
-++ 
++++
 
 As you may or may not be aware, I recently helped on the data side of [Nottinghamshire Healthcare NHS Trust’s](http://www.nottinghamshirehealthcare.nhs.uk/) feedback website which lives [here](http://feedback.nottinghamshirehealthcare.nhs.uk/reports/custom). Part of this work was collecting the data we receive from the Trust-wide patient survey and bringing it in with other sources of feedback, including stories from our friends over at [Patient Opinion](https://www.patientopinion.org.uk/).
 

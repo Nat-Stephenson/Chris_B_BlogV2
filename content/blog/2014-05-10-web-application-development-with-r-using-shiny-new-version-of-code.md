@@ -4,7 +4,7 @@ date = "2014-05-10T20:54:21Z"
 guid = "http://chrisbeeley.net/?p=631"
 id = 631
 title = "Web application development with R using Shiny new version of code"
-++ 
++++
 
 The new version of Shiny (0.9) is wonderful, hopefully I will talk about it again soon, but it does break the code in my book, [Web application development with R using Shiny](http://www.packtpub.com/web-application-development-with-r-using-shiny/book). It’s only a small difference, the selectInput() function used to ask for preselected elements to be given as the name of a list (i.e. the friendly version that appears to users in the UI, “Egg Salad”) whereas now it asks for the actual value (“eggSalad”, e.g.).
 
