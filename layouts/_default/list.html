@@ -4,7 +4,8 @@
   <div class="blog-card-list">
     {{/* Only use custom blog card logic for the Posts section. For taxonomies (tags/categories), use default rendering. */}}
     {{ if eq .Kind "section" }}
-      {{ $posts := sort .Pages "Date" "desc" }}
+      {{ $posts := where .Pages "Kind" "page" }}
+      {{ $posts = sort $posts "Date" "desc" }}
       {{ if gt (len $posts) 0 }}
         <div class="blog-list">
           {{ range $i, $post := $posts }}

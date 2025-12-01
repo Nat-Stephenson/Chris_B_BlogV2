@@ -1,18 +1,21 @@
 {{ define "main" }}
 <section class="blog-list" style="text-align:center; margin-top:3em;">
-  <h2 style="color:#00bfff; font-family:'Share Tech Mono', monospace, Arial, sans-serif; font-size:2em; letter-spacing:2px; text-shadow:2px 2px 8px #000, 0 0 20px #00bfff; margin-bottom:1.5em; background:rgba(0,0,0,0.85); padding:0.7em 0.5em; border-radius:10px; display:inline-block;">Jedi Archives: All Blog Posts</h2>
+  <h2 style="color:#00bfff; font-family:'Share Tech Mono', monospace, Arial, sans-serif; font-size:2em; letter-spacing:2px; text-shadow:2px 2px 8px #000, 0 0 20px #00bfff; margin-bottom:1.5em; background:rgba(0,0,0,0.85); padding:0.7em 0.5em; border-radius:10px; display:inline-block;">Chris Archives: All Blog Posts</h2>
   <div class="blog-card-list">
-    {{ $posts := where (where .Site.RegularPages "Section" "posts") "Kind" "page" }}
+    {{ $posts := where (where .Site.RegularPages "Section" "blog") "Kind" "page" }}
     {{ if gt (len $posts) 0 }}
-      <div class="blog-list">
-        {{ range $i, $post := $posts }}
-          <div class="blog-card {{ if modBool $i 2 }}jedi-blue{{ else }}jedi-green{{ end }}">
-            <h2><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h2>
-            <p class="blog-date">{{ $post.Date.Format "2006-01-02" }}</p>
-            {{ with $post.Params.description }}<p>{{ . }}</p>{{ end }}
-          </div>
-        {{ end }}
-      </div>
+      {{ range $posts.GroupByDate "2006" "desc" }}
+        <h3 style="color:#ffe81f; font-family:'Share Tech Mono', monospace; font-size:1.8em; margin-top:2em; margin-bottom:1em; text-shadow:2px 2px 8px #000;">{{ .Key }}</h3>
+        <div class="blog-grid">
+          {{ range $i, $post := .Pages }}
+            <div class="blog-card {{ if modBool $i 2 }}jedi-blue{{ else }}jedi-green{{ end }}">
+              <h2><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h2>
+              <p class="blog-date">{{ $post.Date.Format "2006-01-02" }}</p>
+              {{ with $post.Params.description }}<p>{{ . }}</p>{{ end }}
+            </div>
+          {{ end }}
+        </div>
+      {{ end }}
     {{ else }}
       <p>No posts found.</p>
     {{ end }}

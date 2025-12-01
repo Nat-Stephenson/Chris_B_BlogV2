@@ -2,3 +2,86 @@ body {
   background: url("/Chris-Galaxy-Background.png") no-repeat center center fixed;
   background-size: cover;
 }
+
+.blog-card-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5em;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2em;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.blog-card {
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 10px;
+  padding: 1.5em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 191, 255, 0.5);
+}
+
+.blog-card.jedi-blue {
+  border: 2px solid #00bfff;
+}
+
+.blog-card.jedi-green {
+  border: 2px solid #00ff41;
+}
+
+.blog-card h2 {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.blog-card h2 a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.blog-card h2 a:hover {
+  color: #4dd0ff;
+}
+
+.blog-card .blog-date {
+  color: #aaa;
+  font-size: 0.9em;
+  margin-bottom: 0.5em;
+}
+
+.blog-card p {
+  color: #ddd;
+  font-size: 0.95em;
+  line-height: 1.4;
+}
